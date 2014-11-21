@@ -1,0 +1,139 @@
+#topRadioDiv {
+    float: left;
+    color: #FF8C00;
+    padding: 5px;
+}
+#asanaStatusRadioDiv {
+    float: left;
+    color: #FF8C00;
+    padding: 5px;
+}
+#asanaFilterRadioDiv {
+    float: left;
+    color: #FF8C00;
+	padding: 5px;
+}
+#searchDiv {
+    float: left;
+    color: #FF8C00;
+    padding: 5px;
+	padding-top: 50px;
+}
+#buttonArea {
+    width: 520px;
+    height: 220px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #6495ED;
+    background-color: #F0F8FF;
+    border-radius: 5;
+    margin: 0 auto;
+}
+#clearFloat {
+    clear: both;
+}
+
+table {
+    border: 1px solid #6495ED;
+    background-color: #F0F8FF;
+}
+#searchBoxTitle {
+    color: #6495ED;
+    text-align: center;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 30px;
+	background-color: #F0F8FF;
+	margin: 5px;
+	padding: 5px;
+}
+body .ui-autocomplete {
+    color: #6495ED;
+    font-size: 13px;
+    background-color: white;
+    width: 160px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #C0C0C0;
+    height: 80px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    list-style: none;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+    background-color: #E8E8E8;
+    background-image: none;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 0;
+}
+.ui-menu, .ui-menu-item {
+    padding: 1px;
+    margin: 2px;
+    border-radius: 0;
+}
+input {
+	color: #045FB4;
+	font-style: italic;
+}
+table {
+	border: 1px solid #6495ED;
+	background-color: #F0F8FF;
+	border-radius: 5;
+	margin: 0 auto;
+}
+th {
+    color: #6495ED;
+    text-align: center;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 20px;
+	background-color: #F0F8FF;
+	BORDER-BOTTOM: #6495ED 2px solid;
+	
+}
+td {
+    /*BORDER-RIGHT: #6495ED 1px solid;
+    BORDER-TOP: #6495ED 1px solid;
+    BORDER-LEFT: #6495ED 1px solid;*/
+    BORDER-BOTTOM: #6495ED 1px solid;
+    color:#FF8C00;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 13px;
+}
+caption {
+	color: #6495ED;
+	font-size: 15px;
+	text-align: left;
+}
+tr:nth-child(even) {
+	background-color: white;
+}
+tr:nth-child(odd) {
+	background-color: #F2F2F2;
+}
+tr:hover {
+	background-color: #045FB4;
+}
+p {
+    color: #6495ED;
+    text-align: center;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 15px;
+	background-color: #F0F8FF;
+	margin: 5px;
+	padding: 5px;
+}
+.expandedAsanaNot, .expandedAsanaPar, .expandedAsanaSub {
+	color:#FF8C00;
+	font-style: italic;
+	padding: 3px;
+}
+.expandedAsanaCre, .expandedAsanaMod {
+	color:#FF8C00;
+	font-style: italic;
+	padding: 3px;
+}
+.expandedAsanaCom, .expandedAsanaDue {
+	color:#FF8C00;
+	font-style: italic;
+	padding: 3px;
+}

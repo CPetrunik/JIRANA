@@ -1,0 +1,47 @@
+<html>
+<head>
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <script src="jquery-1.11.1.min.js"></script>
+    <script src="jquery-ui-1.11.1.min.js"></script>
+    <script src="spin.min.js"></script>
+    <script src="HttpManager.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+<div id="buttonArea">
+    <h3 id="searchBoxTitle">Jirana</h3>
+    <div id="topRadioDiv">
+        <p>
+            Domain
+        </p>
+        <input name="topRadio" type="radio" value="asana">Asana Task<br>
+        <input name="topRadio" type="radio" value="jira">Jira Issue
+    </div>
+    <div id="asanaStatusRadioDiv">
+        <p>
+            Status
+        </p>
+        <input name="asanaStatusRadio" type="radio" value="all">All<br>
+        <input name="asanaStatusRadio" type="radio" value="open">Not Completed
+    </div>
+    <div id="asanaFilterRadioDiv">
+        <p>
+            Search By
+        </p>
+        <input name="asanaFilterRadio" type="radio" value="user">Assignee<br>
+        <input name="asanaFilterRadio" type="radio" value="proj">Project<br>
+        <input name="asanaFilterRadio" type="radio" value="tag">Tag<br>
+        <input name="asanaFilterRadio" type="radio" value="task">Task ID
+    </div>
+    <div id="searchDiv" hidden>
+        <input id="searchInput" type="text">
+        <button id="searchButton"
+                type="button">
+            Search
+        </button>
+    </div>
+</div>
+<div id="tableSpaceDiv">
+</div>
+</body>
+</html>
