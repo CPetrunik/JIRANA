@@ -1,0 +1,265 @@
+/* Chrome Extension CSS */
+body {
+    width: 750px;
+    margin:0px;
+    padding:0;
+    border:0;
+}
+*{
+    outline: none!important;
+}
+
+/* Non-responsive overrides for Bootstrap 3
+ *
+ * Utilize the following CSS to disable the responsive-ness of the container,
+ * grid system, and navbar.
+ */
+
+/* Reset the container */
+.container {
+    max-width: none !important;
+    width: 750px;
+}
+
+/* Always float the navbar header */
+.navbar-header {
+    float: left;
+}
+.container>.navbar-header,
+.container-fluid>.navbar-header,
+.container>.navbar-collapse,
+.container-fluid>.navbar-collapse {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Undo the collapsing navbar */
+.navbar-collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+}
+.navbar-toggle {
+    display: none;
+}
+.navbar-collapse {
+    border-top: 0;
+}
+.navbar-brand {
+    margin-left: -15px;
+}
+.navbar-form {
+    float: left;
+    border: none;
+    margin: 7px 15px;
+    padding: 0 15px;
+}
+.navbar-form .form-control {
+    width: auto;
+}
+/* Always apply the floated nav */
+
+.navbar-nav {
+    float: left;
+    margin: 0;
+}
+.navbar-nav > li {
+    float: left;
+}
+.navbar-nav > li > a {
+    padding: 15px;
+}
+
+/* Redeclare since we override the float above */
+.navbar-nav.navbar-right {
+    float: right;
+}
+
+/* Undo custom dropdowns */
+.navbar .navbar-nav .open .dropdown-menu {
+    position: absolute;
+    float: left;
+    background-color: #fff;
+    border: 1px solid #cccccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-width: 0 1px 1px;
+    border-radius: 0 0 4px 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #333;
+}
+.navbar .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar .navbar-nav .open .dropdown-menu > li > a:focus,
+.navbar .navbar-nav .open .dropdown-menu > .active > a,
+.navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #fff !important;
+    background-color: #428bca !important;
+}
+.navbar .navbar-nav .open .dropdown-menu > .disabled > a,
+.navbar .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+.navbar .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #999 !important;
+    background-color: transparent !important;
+}
+.progress-bar-yellow {
+    background-color: #FBE13E;
+}
+.progress-striped .progress-bar-yellow {
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.progress-bar-lime {
+    background-color: #96E33F;
+}
+.progress-striped .progress-bar-lime {
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+
+/* END   Non-responsive overrides for Bootstrap 3 */
+
+/* START Spinning Loader */
+#floatingCirclesG {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+}
+.f_circleG {
+    position: absolute;
+    background-color: #428ACA;
+    height: 27px;
+    width: 27px;
+    -webkit-border-radius: 14px;
+    -webkit-animation-name: f_fadeG;
+    -webkit-animation-duration: 0.72s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: linear;
+    border-radius: 14px;
+    animation-name: f_fadeG;
+    animation-duration: 0.72s;
+    animation-iteration-count: infinite;
+    animation-direction: linear;
+}
+#frotateG_01 {
+    left: 0;
+    top: 61px;
+    -webkit-animation-delay: 0.27s;
+    animation-delay: 0.27s;
+}
+#frotateG_02 {
+    left: 18px;
+    top: 18px;
+    -webkit-animation-delay: 0.36s;
+    animation-delay: 0.36s;
+}
+#frotateG_03 {
+    left: 61px;
+    top: 0;
+    -webkit-animation-delay: 0.45s;
+    animation-delay: 0.45s;
+}
+#frotateG_04 {
+    right: 18px;
+    top: 18px;
+    -webkit-animation-delay: 0.54s;
+    animation-delay: 0.54s;
+}
+#frotateG_05 {
+    right: 0;
+    top: 61px;
+    -webkit-animation-delay: 0.63s;
+    animation-delay: 0.63s;
+}
+#frotateG_06 {
+    right: 18px;
+    bottom: 18px;
+    -webkit-animation-delay: 0.72s;
+    animation-delay: 0.72s;
+}
+#frotateG_07 {
+    left: 61px;
+    bottom: 0;
+    -webkit-animation-delay: 0.81s;
+    animation-delay: 0.81s;
+}
+#frotateG_08 {
+    left: 18px;
+    bottom: 18px;
+    -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s;
+}
+@-webkit-keyframes f_fadeG {
+    0% {
+        background-color: #F0AD4E
+    }
+    100% {
+        background-color: #428ACA
+    }
+}
+@keyframes f_fadeG {
+    0% {
+        background-color: #F0AD4E
+    }
+    100% {
+        background-color: #428ACA
+    }
+}
+/* END Spinning Loader */
+
+
+
+/* STUD-DEV CSS */
+body {
+    padding-top: 51px;
+    margin:auto;
+}
+
+.highlite {
+    padding: 9px 14px;
+    margin-bottom: 14px;
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+    border-radius: 4px;
+}
+
+#content {
+    height:500px;
+    width:750px;
+    overflow-x:hidden;
+}
+ table tr:first-child td{ 
+     border-top: none; 
+ }
+
+#sdd-sprint{
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+#sdd-hidden {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 0px;
+    width: 0px;
+    overflow: hidden;
+    visibility: hidden;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+table, table tr, table tr td { table-layout: fixed; overflow:hidden; white-space: nowrap;}
+.table{
+padding-bottom:1px;
+border-bottom:2px solid #ddd;
+}
+
+.jira{
+    font-weight: bold; width:100%;border-radius:2px;background-color:#d9534f;color:#FFF;text-align:center;
+}
