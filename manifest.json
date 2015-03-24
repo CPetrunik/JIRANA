@@ -12,5 +12,6 @@
         "default_icon": "img/icon.png",
         "default_popup": "src/stud-dev.html"
     },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
     "manifest_version": 2
 }
