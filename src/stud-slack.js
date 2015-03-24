@@ -42,13 +42,19 @@ $(".wdSlackButton").click(function (e) {
     }
     else if (button.hasClass("customMessage"))
     {
-        alert("custom message to come");
+        // pops a modal
+    }
+    else
+    {
+        alert("not mapped");
     }
 
     e.preventDefault();
 });
 
-
+$(".sendCustomMessage").click(function (e) {
+    alert('here');
+});
 
 
 
