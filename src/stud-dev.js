@@ -3,9 +3,8 @@ Handlebars.registerHelper('template', function (templateName, context) {
 });
 
 Handlebars.registerHelper('data', function (options) {
-    var obj = (stud.d[this.replace(/\x5b/g, '').replace(/\x5c[a-z0-9+]*\x5d/g, '')]);
-    console.log(obj);
-    return options.fn(obj);
+    console.log(this.replace(/\x5b/g, '').replace(/\x5c[a-z0-9+]*\x5d/g, ''));
+    return options.fn(stud.d[this.replace(/\x5b/g, '').replace(/\x5c[a-z0-9+]*\x5d/g, '')]);
 });
 
 
@@ -172,15 +171,24 @@ $.getJSON(
             'https://jira2.workday.com/rest/api/2/search?jql=',
             'project%20%3D%20STU%20AND%20updated%20>%20"2014-11-24%2018%3A05"', //JQL REQUEST
             '&fields=',
-            'key,customfield_17400,status,summary,updated', // FIELDS
+            'key,customfield_17400,status,summary,updated,assignee', // FIELDS
             '&maxResults=3000'
         ].join(''),
         function (data) {
             $.each(data.issues, function (key, val) {
                 stud.d['j:' + val.key] = {
-                    'n': val.fields.summary
+                    'n': val.fields.summary,
+                    'u': val.fields.assignee.name
                 };
             });
+            var i = "";
+            $.each(stud.d, function (key, val) {
+                if (val.n.slice(-1) != ":") {
+                    i = i + "[" + key + String.fromCharCode(0x5c) + (val.n + " " + val.u).toLowerCase().replace(/[^a-z0-9 ]/g, ' ').match(/[a-z0-9]+/g).join("+") + "]";
+                }
+            });
+            stud.i = i;
+            
             //console.log(data);
         });
 
