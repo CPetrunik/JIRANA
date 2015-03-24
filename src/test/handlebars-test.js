@@ -1,19 +1,19 @@
 var source   = $("#entry-template").html();
 var template = Handlebars.compile(source);
 var context = {
-        'name': 'Test JIRA Name', // name
+        'name': 'Test Asana Title', // name
         'user': 'Jeremy White', // user
         'module': 'Admissions', // module
         'patch': 'Y', // patch
         'backlog': 'N', // backlog
         'fix': '~', // fix version
-        'status': 'In Progress', // JIRA Asana status
-        'date': '03-25-2015', // Asana Due Date
+        'status': 'Incomplete', // JIRA Asana status
+        'date': '03-29-2015', // Asana Due Date
         'link': ['238957523987'],   // links to JIRAs and tasks
         'priority': 'Major', // JIRA priority
         'toggle': 'Admissions Toggle', // JIRA Toggled By
         'commit': '123456', // Lastest JIRA Commit Revision
-        'desc': 'This is the long description for the JIRA', // JIRA Long Description
+        'desc': 'This is the description for the Asana', // JIRA Long Description
         'comments': [
         	{
         		'user':'ben.mccurdy',
