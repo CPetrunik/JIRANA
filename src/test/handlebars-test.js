@@ -1,7 +1,7 @@
 var source   = $("#jira-template").html();
 var template = Handlebars.compile(source);
 var context = {
-        'name': 'Test Asana Title', // name
+        'name': 'Test Asana Title Test Asana Title Test Asana Title', // name
         'user': 'Jeremy White', // user
         'module': 'Admissions', // module
         'patch': 'Y', // patch

@@ -30,10 +30,11 @@
     <script id="jira-template" type="text/x-handlebars-template">
         	<div class="panel panel-primary">
 
-            	<div class="panel-heading test-heading">
-                        <div class="test-heading">{{index}}: {{name}}
-                            <div class="btn-group btn-group-xs pull-right">
-                                <button id="button1" type="button" class="btn btn-warning wdSlackButton pingAssignee">Action</button>
+            	<div class="panel-heading">
+                        <div class="heading">
+                            <div class="header-title">{{index}}: {{name}}</div>
+                            <div class="btn-group pull-right fix-header">
+                                <button id="button1" type="button" class="btn btn-warning wdSlackButton pingAssignee">Ping Assignee</button>
                                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
