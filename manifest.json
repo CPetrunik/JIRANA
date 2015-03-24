@@ -3,9 +3,6 @@
     "version": "1.0",
     "description": "STUD-DEV Chrome Application",
     "permissions": ["cookies", "tabs", "webRequest", "webRequestBlocking", "https://jira.workday.com/*", "https://app.asana.com/*"],
-    "background": {
-        "scripts": ["/src/background.js","/src/main.js"]
-    },
     "icons": {
         "16": "img/icon.png",
         "48": "img/icon.png",
