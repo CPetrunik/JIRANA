@@ -1,4 +1,4 @@
-var source   = $("#asana-template").html();
+var source   = $("#jira-template").html();
 var template = Handlebars.compile(source);
 var context = {
         'name': 'Test Asana Title', // name
@@ -6,7 +6,7 @@ var context = {
         'module': 'Admissions', // module
         'patch': 'Y', // patch
         'backlog': 'N', // backlog
-        'fix': '~', // fix version
+        'fix': '23.0', // actual fix version
         'status': 'Incomplete', // JIRA Asana status
         'date': '03-29-2015', // Asana Due Date
         'link': ['238957523987'],   // links to JIRAs and tasks
@@ -25,7 +25,8 @@ var context = {
         	}
         	], // The comments on the JIRA or Asana
         'verifier': 'Ilana', // The verified by field on the JIRA
-        'type': 'Task' // The type of the JIRA
+        'type': 'Task', // The type of the JIRA
+        'index': 'STU-10804' // The index for the jira and asana
     };
     
 var html    = template(context);   

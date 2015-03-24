@@ -266,4 +266,14 @@ border-bottom:2px solid #ddd;
 
 .label-spacer{
 	margin-left:4px;
+    margin-right: 4px;
+}
+
+.button-spacer{
+    position: relative;
+    right:10px;
+}
+
+.test-heading{
+    width:100%;
 }
