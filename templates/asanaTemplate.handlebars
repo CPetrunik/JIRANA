@@ -1,0 +1,15 @@
+<div class="panel panel-primary">
+            	<div class="panel-heading">{{name}}<span class="badge label-spacer">{{status}}</span></div>
+            		<div class="panel-body">
+            			<div><h4><span class="label label-default">Due: {{date}}</span><span class="label label-default label-spacer">{{module}}</span></h4></div>
+            			<h5>Description: {{desc}}</h5>
+            			<div class="panel panel-default">
+            				<div class="panel-heading">Comments</div>
+            				<div class="panel-body">
+            					{{#comments}}
+            					<p class="commentrow">{{user}}: {{comment}}</p>
+            					{{/comments}}
+            				</div>
+            				</div>
+            		</div>
+        	</div>
