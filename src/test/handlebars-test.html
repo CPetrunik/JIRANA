@@ -32,7 +32,7 @@
 
             	<div class="panel-heading">
                         <div class="heading">
-                            <div class="header-title">{{index}}: {{name}}</div>
+                            <div class="header-title"><h5>{{index}}: {{name}}</h5></div>
                             <div class="btn-group pull-right fix-header">
                                 <button id="button1" type="button" class="btn btn-warning wdSlackButton pingAssignee">Ping Assignee</button>
                                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -63,7 +63,15 @@
                             <div class="col-xs-6 col-md-4"><strong>Fix Version:</strong> {{fix}}</div>
                             <div class="col-xs-6 col-md-4"><strong>Latest Commit:</strong> {{commit}}</div>
                         </div>
-            			
+                        <p></p>
+            			<div class="panel panel-default">
+            				<div class="panel-heading">Latest Comment</div>
+            				<div class="panel-body">
+            					{{#comments}}
+            					<p class="commentrow">{{user}}: {{comment}}</p>
+            					{{/comments}}
+            				</div>
+            				</div>            			
             		</div>
         	</div>
     </script>
