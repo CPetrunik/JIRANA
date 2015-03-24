@@ -265,8 +265,9 @@ border-bottom:2px solid #ddd;
 }
 
 .label-spacer{
+    margin-top:5px;
 	margin-left:4px;
-    margin-right: 4px;
+    margin-right: 10px;
 }
 
 .button-spacer{
@@ -274,6 +275,13 @@ border-bottom:2px solid #ddd;
     right:10px;
 }
 
-.test-heading{
-    width:100%;
+.heading{
+    min-height:40px;
 }
+
+.header-title
+{
+    max-width: 400px;
+    display: inline-block;
+}
+
