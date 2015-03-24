@@ -81,7 +81,7 @@ stud.u = function () {
 //=========
 //stud.a = {};
 // Asana Last Update Time 
-stud.a.l = "'2014-10-21T00:00:00.000Z'";
+stud.a.t = "'2014-10-21T00:00:00.000Z'";
 
 // Asana Data Function
 stud.a.u = function () {
@@ -94,7 +94,7 @@ stud.a.u = function () {
                 "https://app.asana.com/api/1.0/projects/",
                 val,
                 "/tasks?modified_since=",
-                stud.a.l,
+                stud.a.t,
                 "&opt_fields=name,assignee.name,tags.name,modified_at,completed"
             ].join(''),
             function (data) {
@@ -103,6 +103,7 @@ stud.a.u = function () {
                     a['n'] = val.name;
                     a['u'] = (val.assignee !== null ? val.assignee.name.toLowerCase().replace(/ +/g,".") : null);
                     a['c'] = val.completed;
+                    a['l'] = [];
                     $.each(val.tags, function (key, val) {
                         if (val.name.toLowerCase().match(/^[a-z]+[\-][0-9]+$/)) {
                             a['l'].push(val.name.toUpperCase());
@@ -115,12 +116,16 @@ stud.a.u = function () {
     });
     // On Update Complete
     $.when.apply($, u.r).then(function () {
-        stud.a.t = u.time;
+        chrome.storage.local.set({"d":stud.d});
+        stud.a.t = u.t;
+        var i = "";
         $.each(stud.d, function (key, val) {
             if (val.n.slice(-1) != ":") {
-                stud.i = stud.i + "[" + key + String.fromCharCode(0x5c) + (val.n+ " " + val.u).toLowerCase().replace(/[^a-z0-9 ]/g, ' ').match(/[a-z0-9]+/g).join("+") + "]";
+                i = i + "[" + key + String.fromCharCode(0x5c) + (val.n+ " " + val.u).toLowerCase().replace(/[^a-z0-9 ]/g, ' ').match(/[a-z0-9]+/g).join("+") + "]";
             }
         });
+        stud.i = i;
+        chrome.storage.local.set({"i":stud.i});
     });
 };
 
@@ -128,8 +133,8 @@ stud.a.r = function (p, t) {
     return ;
 };
 
-// Asana Task Function
-stud.a.t = function () {
+// Asana Get Function
+stud.a.g = function () {
 
 };
 
@@ -241,16 +246,14 @@ function update() {
 }
 
 $(document).ready(function () {
+    chrome.storage.local.get("d",function(data){console.log(data.d);if(data.d){ stud.d = data.d;}});
+    chrome.storage.local.get("i",function(data){console.log(data.i);if(data.i){ stud.i = data.i;}});
     $('[data-toggle="tooltip"]').tooltip();
-
-
-    $("#reindex").click(update);
-    $('[data-toggle="tooltip"]').tooltip();
+    $("#reindex").click(stud.u);
     $(".dropdown-menu-replace li a").click(function () {
         var selText = $(this).text();
         $(this).parents('.dropdown').children('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
     });
-    stud.u();
     // Curent: get Asanas updated since 2014-10-21
     // Should: get Asanas updated IN LAST 30 DAYS 
 //    var jira = "https://jira.workday.com/rest/api/2/search?jql=project%20%3D%20STU&fields=key,customfield_17400,status,summary&maxResults=100";
@@ -282,6 +285,7 @@ $(document).ready(function () {
 
     // Fuzzy search on input change after 3 characters
     $("#search").on("change keyup", function () {
+        chrome.storage.local.set({"s":$("#search").val()});
         if ($("#search").val().toLowerCase().replace(/[^a-z0-9]/g, '').length > 2) {
             $('a[href="#sdd-main"]').tab('show');
             var words = $("#search").val().toLowerCase().replace(/[^a-z0-9 ]/g, ' ').match(/[a-z0-9]+/g);
@@ -312,7 +316,7 @@ $(document).ready(function () {
                 var sout = '<table class="table table-hover"><tbody>';
                 $.each(result, function (key, val) {
                     val = val.replace(/\x5b/g, '').replace(/\x5c[a-z0-9+]*\x5d/g, '');
-                    sout += "<tr><td class='col-xs-8' style='overflow:hidden;text-overflow: ellipsis;'>" + stud.d[val].n + "</td><td class='col-xs-3' style='text-align:right;'>" + stud.d[val].u + "<span style='margin-left:10px;' class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span></td></tr>";
+                    sout += "<tr><td class='col-xs-8' style='overflow:hidden;text-overflow: ellipsis;'>" + stud.d[val].l[0] + " " + stud.d[val].n + "</td><td class='col-xs-3' style='text-align:right;'>" + stud.d[val].u + "<span style='margin-left:10px;' class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span></td></tr>";
                 });
                 sout += '</tbody></table>';
                 return sout;
