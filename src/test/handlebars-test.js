@@ -1,4 +1,4 @@
-var source   = $("#entry-template").html();
+var source   = $("#asana-template").html();
 var template = Handlebars.compile(source);
 var context = {
         'name': 'Test Asana Title', // name
