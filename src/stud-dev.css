@@ -263,3 +263,7 @@ border-bottom:2px solid #ddd;
 .jira{
     font-weight: bold; width:100%;border-radius:2px;background-color:#d9534f;color:#FFF;text-align:center;
 }
+
+.label-spacer{
+	margin-left:4px;
+}

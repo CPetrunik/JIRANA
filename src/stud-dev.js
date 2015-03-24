@@ -164,35 +164,25 @@ stud.a.g = function () {
 // Jira
 //=========
 stud.j = {};
-stud.j.p = [];
-stud.j.u = function () {
-    var u = {};
-    u.r = [];
-    u.t = stud.a.t;
-    $.each(stud.a.p, function (key, val) {
-        u.r.push($.getJSON(
-            [
-                "https://app.asana.com/api/1.0/projects/",
-                val,
-                "/tasks?modified_since=",
-                stud.last.a,
-                "&opt_fields=name,assignee.name,tags.name,modified_at,completed"
-            ].join(''),
-            function (data) {
-                $.each(data.data, function (key, val) {
-                    var j = stud.g('j:' + val.id);
-                    j['n'] = val.name;
-                    j['u'] = (val.assignee !== null ? val.assignee.name.toLowerCase().replace(/ +/g, ".") : null);
-                    j['c'] = val.completed;
-                    u.t = [val.modified_at, stud.last.a].sort()[1];
-                });
-            }
-        ));
-    });
-    // On Update Complete
-    $.when.apply($, u.r).then(function () {
-        stud.j.t = u.time;
-    });
+
+stud.j.p = ['STU'];
+stud.j.u = function(){
+$.getJSON(
+        [
+            'https://jira2.workday.com/rest/api/2/search?jql=',
+            'project%20%3D%20STU%20AND%20updated%20>%20"2014-11-24%2018%3A05"', //JQL REQUEST
+            '&fields=',
+            'key,customfield_17400,status,summary,updated', // FIELDS
+            '&maxResults=3000'
+        ].join(''),
+        function (data) {
+            $.each(data.issues, function (key, val) {
+                stud.d['j:' + val.key] = {
+                    'n': val.fields.summary
+                };
+            });
+            //console.log(data);
+        });
 
 };
 
