@@ -3,7 +3,7 @@ Handlebars.registerHelper('template', function (templateName, context) {
 });
 
 Handlebars.registerHelper('data', function (options) {
-    console.log(this.replace(/\x5b/g, '').replace(/\x5c[a-z0-9+]*\x5d/g, ''));
+    //console.log(this.replace(/\x5b/g, '').replace(/\x5c[a-z0-9+]*\x5d/g, ''));
     return options.fn(stud.d[this.replace(/\x5b/g, '').replace(/\x5c[a-z0-9+]*\x5d/g, '')]);
 });
 
@@ -86,7 +86,8 @@ stud.u = function () {
         });
         stud.a.u();
     });
-    
+    stud.j.u();
+
 };
 
 //=========
@@ -135,18 +136,22 @@ stud.a.u = function () {
             "d": stud.d
         });
         stud.a.t = u.t;
-        var i = "";
-        $.each(stud.d, function (key, val) {
-            if (val.n.slice(-1) != ":") {
-                i = i + "[" + key + String.fromCharCode(0x5c) + (val.n + " " + val.u).toLowerCase().replace(/[^a-z0-9 ]/g, ' ').match(/[a-z0-9]+/g).join("+") + "]";
-            }
-        });
-        stud.i = i;
-        chrome.storage.local.set({
-            "i": stud.i
-        });
+        index_search();
     });
 };
+
+function index_search() {
+    var i = "";
+    $.each(stud.d, function (key, val) {
+        if (val.n.slice(-1) != ":") {
+            i = i + "[" + key + String.fromCharCode(0x5c) + (val.n + " " + val.u).toLowerCase().replace(/[^a-z0-9 ]/g, ' ').match(/[a-z0-9]+/g).join("+") + "]";
+        }
+    });
+    stud.i = i;
+    chrome.storage.local.set({
+        "i": stud.i
+    });
+}
 
 stud.a.r = function (p, t) {
     return;
@@ -166,8 +171,8 @@ stud.a.g = function () {
 stud.j = {};
 
 stud.j.p = ['STU'];
-stud.j.u = function(){
-$.getJSON(
+stud.j.u = function () {
+    $.getJSON(
         [
             'https://jira2.workday.com/rest/api/2/search?jql=',
             'project%20%3D%20STU%20AND%20updated%20>%20"2014-11-24%2018%3A05"', //JQL REQUEST
@@ -177,15 +182,20 @@ $.getJSON(
         ].join(''),
         function (data) {
             $.each(data.issues, function (key, val) {
-                stud.d['index:' + val.key] = {
+                //console.log(val.key);
+                stud.d['j:' + val.key] = {
+                    'i': val.key,
+                    'n': val.fields.summary,
+                    'u': val.fields.assignee.name,
                     'name': val.fields.summary,
                     'user': val.fields.assignee.name,
                     'type': val.fields.issuetype.name,
-                    'verifier': val.fields.customfield_10213 != null ? val.fields.customfield_10213.name: null,
-                    'toggle': val.fields.customfield_10306 != null ? val.fields.customfield_10306[0]: null,
-                    'fix': val.fields.fixVersions[0] != null ? val.fields.fixVersions[0].name: null
+                    'verifier': val.fields.customfield_10213 != null ? val.fields.customfield_10213.name : null,
+                    'toggle': val.fields.customfield_10306 != null ? val.fields.customfield_10306[0] : null,
+                    'fix': val.fields.fixVersions[0] != null ? val.fields.fixVersions[0].name : null
                 };
             });
+            index_search();
         });
 
 };
@@ -225,7 +235,7 @@ function update() {
                     "&opt_fields=name,assignee,tags.name,modified_at,completed"
                 ].join(''),
                     function (data) {
-                        console.log(data.data);
+                        //console.log(data.data);
                         $.each(data.data, function (key, val) {
                             stud.last.a = [val.modified_at, stud.last.a].sort()[1];
                             u.data['i:' + val.id] = {
@@ -236,7 +246,7 @@ function update() {
                                     var jiras = [];
                                     $.each(val.tags, function (key, val) {
                                         if (val.name.toLowerCase().match(/^[a-z]+[-][0-9]+$/)) {
-                                            console.log('jira ' + val.name);
+                                            //console.log('jira ' + val.name);
                                             jiras.push(val.name.toUpperCase());
                                         }
                                     });
@@ -262,12 +272,12 @@ function update() {
 function search(str) {
     if (str.toLowerCase().replace(/[^a-z0-9]/g, '').length > 2) {
         var words = str.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').match(/[a-z0-9]+/g);
-        var query = "\\x5b[aj][:][a-z0-9]+\\x5c";
+        var query = "\\x5b[aj][:][a-zA-Z0-9-]+\\x5c";
         $.each(words, function (key, val) {
             query += "(?=[a-z0-9+]*" + val.match(/[a-z0-9]/g).join("[a-z0-9]*") + "[a-z0-9+]*)";
         });
         query += "[a-z0-9+]*\\x5d";
-
+        //console.log(stud.i.match(new RegExp(query, "g")));
         return stud.i.match(new RegExp(query, "g")) || [];
     }
     return [];
@@ -275,13 +285,13 @@ function search(str) {
 
 $(document).ready(function () {
     chrome.storage.local.get("d", function (data) {
-        console.log(data.d);
+        //console.log(data.d);
         if (data.d) {
             stud.d = data.d;
         }
     });
     chrome.storage.local.get("i", function (data) {
-        console.log(data.i);
+        //console.log(data.i);
         if (data.i) {
             stud.i = data.i;
         }
