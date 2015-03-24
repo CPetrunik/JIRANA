@@ -2,7 +2,7 @@
     "name": "STUD-DEV",
     "version": "1.0",
     "description": "STUD-DEV Chrome Application",
-    "permissions": ["cookies", "tabs", "webRequest", "webRequestBlocking", "https://jira.workday.com/*", "https://app.asana.com/*"],
+    "permissions": ["storage","cookies", "tabs", "webRequest", "webRequestBlocking", "https://jira.workday.com/*", "https://app.asana.com/*"],
     "icons": {
         "16": "img/icon.png",
         "48": "img/icon.png",
@@ -12,5 +12,6 @@
         "default_icon": "img/icon.png",
         "default_popup": "src/stud-dev.html"
     },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
     "manifest_version": 2
 }
