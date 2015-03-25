@@ -277,6 +277,38 @@ function search(str) {
             query += "(?=[a-z0-9+]*" + val.match(/[a-z0-9]/g).join("[a-z0-9]*") + "[a-z0-9+]*)";
         });
         query += "[a-z0-9+]*\\x5d";
+        
+        var results = stud.i.match(new RegExp(query, "g"));
+        var map = {};
+        var links = [];
+        $.each(results, function(key,val){
+            val = val.replace(/\x5b/g, '').replace(/\x5c[a-z0-9+]*\x5d/g, '');
+            if(val.charAt(0) === "j"){
+                if(!map[val]){
+                    map[val] = {j:val, a:[]};
+                    links.push(map[val]);
+                }
+            }else if(val.charAt(0) === "a"){
+                $.each(stud.d[val].l,function(key,jval){
+                    if(!map['j:' + jval]){
+                        map['j:' + jval] = {j: 'j:' + jval, a:[val]};
+                        links.push(map['j:' + jval]);
+                    }else{
+                        map['j:' + jval].a.push(val);
+                    }
+                });
+                if(stud.d[val].l.length === 0){
+                    links.push({j: '', a:[val]});
+                
+                }
+            }
+               
+            console.log(val);
+        });
+        console.log("LINKS");
+        console.log(links);
+        return links;
+        var results = "";
         //console.log(stud.i.match(new RegExp(query, "g")));
         return stud.i.match(new RegExp(query, "g")) || [];
     }

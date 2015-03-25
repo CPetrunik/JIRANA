@@ -1,5 +1,9 @@
 <tr>
     <td>
+        {{#with j}}
+        {{#data}}
+        {{/data}}
+        {{/with}}
         <div class="row">
             <div class="col-xs-2">
                 <div class="jira">
@@ -14,6 +18,8 @@
             <div class="col-xs-1" style="text-align:right;"><span class="label label-default" style="margin-left:-50px;">revision</span>
             </div>
         </div>
+        
+        
         <div class="row">
             <div class="col-xs-2" style="text-align:right;">
                 <span class="label label-info" data-toggle="tooltip" data-animation="false" data-placement="left" title="Open"><span class="glyphicon glyphicon-link"></span></span>
