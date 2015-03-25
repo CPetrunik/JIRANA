@@ -20,29 +20,33 @@
 <li><a href="#" class="wdSlackButton customMessage">Custom Message...</a></li>
 </ul>
 </div>*/
-var jira;
+var item;
+var isJira;
 
 function routeCorrectSlackOnID(button, itemID)
 {
-    jira = stud.d[itemID];
+    item = stud.d[itemID];
+    isJira = (itemID.charAt(0) === 'j');
+
+    console.log(itemID);
 
     if (button.hasClass("pingAssignee"))
     {
-        sendSlack(jira, "@"+jira.u,  "Ping", '', "#B4C09B");
+        sendSlack(item, "@"+item.u,  "Ping", '', "#B4C09B");
     }
     else if (button.hasClass("resolveAssignee"))
     {
-        sendSlack(jira, "@"+jira.u, "Please Resolve This", '', "#0067AC");
+        sendSlack(item, "@"+item.u, "Please Resolve This", '', "#0067AC");
     }
     else if (button.hasClass("commentAssignee"))
     {
-        sendSlack(jira, "@"+jira.u, "Please add a comment", '', "#F37949");
+        sendSlack(item, "@"+item.u, "Please add a comment", '', "#F37949");
     }
     else if (button.hasClass("pingQALead"))
     {
-        if (jira.verifier)
+        if (item.verifier)
         {
-            sendSlack(jira, "@"+jira.verifier, "Ping QA");
+            sendSlack(item, "@"+item.verifier, "Ping QA");
         }
         else
         {
@@ -65,14 +69,23 @@ $(".sendCustomMessage").click(function (e) {
     var recipientInput = $(modalContent).find("#recipient-name");
     var messageInput = $(modalContent).find("#message-text");
 
-    sendSlack(jira, "@" + recipientInput.val(), messageInput.val(), "Custom Ping");
+    var recipient = recipientInput.val();
+    if (recipient.charAt(0) === '#')
+    {
+        recipient = recipient.replace('#', '');
+    }
+    else
+    {
+        recipient = "@" + recipient;
+    }
+    sendSlack(item, recipient, messageInput.val(), "Custom Ping");
 });
 
 
 
 
 
-function sendSlack(jira, channel, comment, message, colorCode) {
+function sendSlack(item, channel, comment, message, colorCode) {
 
     message = (typeof message === 'undefined') ? '' : message;
     colorCode = (typeof colorCode === 'undefined') ? '#D00000' : colorCode;
@@ -81,10 +94,18 @@ function sendSlack(jira, channel, comment, message, colorCode) {
     var xhr = new XMLHttpRequest();
     xhr.open("post", "https://hooks.slack.com/services/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", true);
 
-    var title = jira.i;
-    title += (jira.n) ? ": " + jira.n : "";
-    title += (jira.type) ? " ["+ jira.type + "] " : "";
-    title += "<https://jira2.workday.com/browse/" + jira.i + "| - Click to goto Jira>";
+    var title = item.i;
+    title += (item.n) ? ": " + item.n : "";
+    title += (item.type) ? " ["+ item.type + "] " : "";
+    if (isJira)
+    {
+        title += "<https://jira2.workday.com/browse/" + item.i + "| - Click to goto item>";
+    }
+    else
+    {
+        title += "<https://app.asana.com/0/0/" + item.i + "/f| - Click to goto item>";
+    }
+
     var data=
     {
         "text":message,
