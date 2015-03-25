@@ -1,11 +1,12 @@
 <tr class="searchResult" style="cursor:pointer;">
     <td>
         {{#with j}}
+        <input class="jira_id" type="hidden" value="{{this}}">
         {{#data}}
         <div class="row">
             <div class="col-xs-2">
                 <div class="jira">
-                    <h4 style="margin-top:0px;margin-bottom:0px;">{{i}}</h4>
+                    <h4 style="margin-top:0px;margin-bottom:0px;"><a href="{{jiraLink}}">{{i}}</a></h4>
                 </div>
             </div>
 
@@ -19,6 +20,7 @@
         {{/data}}
         {{/with}}
         {{#each a}}
+        <input class="asana_id" type="hidden" value="{{this}}">
         {{#data}}
         
         <div class="row">

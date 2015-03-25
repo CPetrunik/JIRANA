@@ -24,7 +24,7 @@ var jira;
 
 function routeCorrectSlackOnID(button, itemID)
 {
-    jira = stud.d["j:" + itemID];
+    jira = stud.d[itemID];
 
     if (button.hasClass("pingAssignee"))
     {

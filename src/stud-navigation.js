@@ -6,7 +6,7 @@ function transitionToItem(itemNumber)
 
     $("#search-out").fadeOut(function () {
 
-        $("#item-container").html(Handlebars.templates.parentTemplate("j:" + itemNumber));
+        $("#item-container").html(Handlebars.templates.parentTemplate(itemNumber));
         $(".wdSlackButton").click(function (e) {
             var button = $(this);
             routeCorrectSlackOnID(button, itemNumber);

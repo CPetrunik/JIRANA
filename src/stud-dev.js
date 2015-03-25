@@ -3,18 +3,20 @@ Handlebars.registerHelper('template', function (templateName, context) {
 });
 
 Handlebars.registerHelper('data', function (options) {
-    console.log(stud.d[this]);
     return options.fn(stud.d[this]);
 });
 
 Handlebars.registerHelper('panelColor', function () {
-	console.log(this);
    if(this.status == "Complete") {
        return 'completed-asana'; } //if asana is complete return grayish green
    else if(this.backlog == 1) {
        return 'inc-backlog-asana'; } //if asana is not complete but in backlog return blue
    else {
        return 'inc-frontlog-asana'; } //if asana is not complete and in the frontlog return red orange
+});
+
+Handlebars.registerHelper('jiraLink', function () {
+	return "https://jira2.workday.com/browse/" + this.index;
 });
 
 var stud = {};
@@ -397,9 +399,11 @@ $(document).ready(function () {
         result = search($("#search").val());
         $("#search-out").html(Handlebars.templates.search(result));
         $(".searchResult").click(function (e) {
-            var h4Array = $(this).find("h4");
-            var itemNumber = $(h4Array[0]).text();
-            transitionToItem(itemNumber);
+            var jira_id = $(this).find(".jira_id").first().val();
+            //var itemNumber = $(h4Array[0]).text();
+            
+            //console.log(jira_id);
+            transitionToItem(jira_id);
         });
     });
 });
