@@ -188,6 +188,7 @@ stud.j.u = function () {
                 //console.log(val.key);
                 stud.d['j:' + val.key] = {
                     'i': val.key,
+                    'index': val.key,                    
                     'n': val.fields.summary,
                     'u': val.fields.assignee.name,
                     'name': val.fields.summary,
