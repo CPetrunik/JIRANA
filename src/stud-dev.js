@@ -210,6 +210,7 @@ stud.j.u = function () {
                 j['i'] = val.key;
                 j['index'] = val.key;                    
                 j['n'] = val.fields.summary;
+                j['status'] = val.fields.status.name;
                 j['u'] = val.fields.assignee.name;
                 j['name'] = val.fields.summary;
                 j['user']= val.fields.assignee.name;

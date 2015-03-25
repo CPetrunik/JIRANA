@@ -117,8 +117,10 @@ templates['searchResult'] = template({"1":function(depth0,helpers,partials,data)
     + "</h4>\n                </div>\n            </div>\n\n            <div class=\"col-xs-6\">\n                <h4 style=\"margin-top:0px;margin-bottom:0px;padding-bottom:5px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\">"
     + alias3(((helper = (helper = helpers.n || (depth0 != null ? depth0.n : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"n","hash":{},"data":data}) : helper)))
     + "</h4>\n            </div>\n            <div class=\"col-xs-3\" style=\"text-align:right;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\">"
-    + alias3(((helper = (helper = helpers.u || (depth0 != null ? depth0.u : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"u","hash":{},"data":data}) : helper)))
-    + "</div>\n            <div class=\"col-xs-1\" style=\"text-align:right;\"><span class=\"label label-default\" style=\"margin-left:-50px;\">revision</span>\n            </div>\n        </div>\n";
+    + alias3(((helper = (helper = helpers.user || (depth0 != null ? depth0.user : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"user","hash":{},"data":data}) : helper)))
+    + "</div>\n            <div class=\"col-xs-1\" style=\"text-align:right;\"><span class=\"label label-default\" style=\"margin-left:-50px;\">"
+    + alias3(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"status","hash":{},"data":data}) : helper)))
+    + "</span>\n            </div>\n        </div>\n";
 },"4":function(depth0,helpers,partials,data) {
     var stack1, helper, options, buffer = "";
 
@@ -130,7 +132,7 @@ templates['searchResult'] = template({"1":function(depth0,helpers,partials,data)
     var helper;
 
   return "        \n        <div class=\"row\">\n            <div class=\"col-xs-2\" style=\"text-align:right;\">\n                <span class=\"label label-info\" data-toggle=\"tooltip\" data-animation=\"false\" data-placement=\"left\" title=\"Open\"><span class=\"glyphicon glyphicon-link\"></span></span>\n            </div>\n            <div class=\"col-xs-10\">\n                "
-    + this.escapeExpression(((helper = (helper = helpers.n || (depth0 != null ? depth0.n : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"n","hash":{},"data":data}) : helper)))
+    + this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
     + "\n            </div>\n        </div>\n        \n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1;
