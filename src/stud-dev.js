@@ -142,11 +142,11 @@ stud.a.u = function () {
                             if($.inArray(val.name.toUpperCase(),a['l']) == -1){
                                a['l'].push(val.name.toUpperCase());
                                }
-                            var j = stud.g('j:' + val.name.toUpperCase());
-                            if($.inArray('a:' + a['i'], j.l) == -1){ 
-                                 j.l.push('a:' + a['i']);
+                            var jira = stud.g('j:' + val.name.toUpperCase());
+                            if($.inArray('a:' + a['i'], jira.l) === -1){ 
+                                 jira.l.push('a:' + a['i']);
                             }
-                            j['i'] = j['index'] = val.name.toUpperCase();
+                            jira['i'] = jira['index'] = val.name.toUpperCase();
                         }
                     });
                     u.t = [val.modified_at, stud.a.l].sort()[1];
@@ -391,6 +391,7 @@ $(document).ready(function () {
 
     // Fuzzy search on input change after 3 characters
     $("#search").on("keyup", function () {
+        transitionToList();
         var result;
         chrome.storage.local.set({
             "s": $("#search").val()
