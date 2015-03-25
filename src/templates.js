@@ -10,9 +10,9 @@ templates['asanaTemplate'] = template({"1":function(depth0,helpers,partials,data
     + "</p>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression, buffer = 
-  "<div class=\"panel "
+  "<div class=\"panel panel-default\">\n      <div class=\"panel-heading "
     + alias3(((helper = (helper = helpers.panelColor || (depth0 != null ? depth0.panelColor : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"panelColor","hash":{},"data":data}) : helper)))
-    + "\">\n      <div class=\"panel-heading\">"
+    + "\">"
     + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
     + "<span class=\"badge label-spacer\">"
     + alias3(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"status","hash":{},"data":data}) : helper)))
@@ -67,29 +67,29 @@ templates['jiraTemplate'] = template({"1":function(depth0,helpers,partials,data)
 templates['parentTemplate'] = template({"1":function(depth0,helpers,partials,data) {
     var stack1;
 
-  return "	<div class=\"row\">\n        <div class=\"col-xs-12\">"
+  return "        <div class=\"row\">\n            <div class=\"col-xs-12\">"
     + this.escapeExpression((helpers.template || (depth0 && depth0.template) || helpers.helperMissing).call(depth0,"jiraTemplate",{"name":"template","hash":{},"data":data}))
-    + "</div>\n	</div>\n\n    <div class=\"row\">\n"
+    + "</div>\n        </div>\n\n        <div class=\"row\">\n            "
     + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.l : depth0),{"name":"each","hash":{},"fn":this.program(2, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + "    </div>\n           \n";
+    + "\n        </div>\n\n";
 },"2":function(depth0,helpers,partials,data) {
-    var stack1, helper, options, buffer = "";
-
+    var stack1, helper, options, buffer = 
+  " ";
   stack1 = ((helper = (helper = helpers.data || (depth0 != null ? depth0.data : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"data","hash":{},"fn":this.program(3, data, 0),"inverse":this.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0,options) : helper));
   if (!helpers.data) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
-  return buffer;
+  return buffer + " ";
 },"3":function(depth0,helpers,partials,data) {
-    return "                <div class=\"col-xs-6\">"
+    return "\n            <div class=\"col-xs-6\">"
     + this.escapeExpression((helpers.template || (depth0 && depth0.template) || helpers.helperMissing).call(depth0,"asanaTemplate",{"name":"template","hash":{},"data":data}))
-    + "</div>\n";
+    + "</div>\n            ";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, options, buffer = 
-  "<input type=\"button\" id=\"returnToSearch\" class=\"btn\" value=\"<- back\"/>\n\n<div>\n";
+  "<div class=\"row\">\n    <div class=\"col-xs-12\">\n        <div class=\"row\" style=\"padding-top:15px;padding-bottom:15px;\">\n            <div class=\"col-xs-12\">\n                <button type=\"button\" id=\"returnToSearch\" class=\"btn btn-default btn-md\">\n                    <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span> Back\n                </button>\n            </div>\n        </div>\n\n";
   stack1 = ((helper = (helper = helpers.data || (depth0 != null ? depth0.data : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"data","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0,options) : helper));
   if (!helpers.data) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
-  return buffer + "</div>";
+  return buffer + "\n    </div>\n</div>";
 },"useData":true});
 templates['search'] = template({"1":function(depth0,helpers,partials,data) {
     return "                "
@@ -137,7 +137,7 @@ templates['searchResult'] = template({"1":function(depth0,helpers,partials,data)
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1;
 
-  return "<tr class=\"searchResult\">\n    <td>\n"
+  return "<tr class=\"searchResult\" style=\"cursor:pointer;\">\n    <td>\n"
     + ((stack1 = helpers['with'].call(depth0,(depth0 != null ? depth0.j : depth0),{"name":"with","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.a : depth0),{"name":"each","hash":{},"fn":this.program(4, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + "    </td>\n</tr>";
