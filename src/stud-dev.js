@@ -132,6 +132,7 @@ stud.a.u = function () {
                     a['date'] = val.due_on;
                     a['desc'] = val.notes;
                     a['module'] = val.projects[0].name;
+                    a['backlog'] = val.projects[0].name !== null ? val.projects[0].name.indexOf('Backlog') > -1 : false;
                     a['l'] = [];
                     $.each(val.tags, function (key, val) {
                         if (val.name.toLowerCase().match(/^[a-z]+[\-][0-9]+$/)) {
