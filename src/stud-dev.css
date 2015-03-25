@@ -292,15 +292,12 @@ border-bottom:2px solid #ddd;
 
 .completed-asana{
 	background-color:#B4C09B !important;
-	border-color:#B4C09B !important;
 }
 
 .inc-backlog-asana{
 	background-color:#0067AC !important;
-	border-color:#0067AC !important;
 }
 
 .inc-frontlog-asana{
 	background-color:#F37949 !important;
-	border-color:#F37949 !important;
 }

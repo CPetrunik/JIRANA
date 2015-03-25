@@ -10,9 +10,9 @@ templates['asanaTemplate'] = template({"1":function(depth0,helpers,partials,data
     + "</p>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression, buffer = 
-  "<div class=\"panel "
+  "<div class=\"panel panel-default\">\n      <div class=\"panel-heading "
     + alias3(((helper = (helper = helpers.panelColor || (depth0 != null ? depth0.panelColor : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"panelColor","hash":{},"data":data}) : helper)))
-    + "\">\n      <div class=\"panel-heading\">"
+    + "\">"
     + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
     + "<span class=\"badge label-spacer\">"
     + alias3(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"status","hash":{},"data":data}) : helper)))
