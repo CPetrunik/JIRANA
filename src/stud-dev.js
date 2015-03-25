@@ -111,11 +111,13 @@ d:ue p t w n
 stud.u = function () {
     //stud.j.p = ['STU'];
     //stud.j.u();
+    resetProgress();
     stud.a.p = [];
     $.getJSON('https://app.asana.com/api/1.0/workspaces/5311864561437/projects?archived=false', function (data) {
         $.each(data.data, function (key, val) {
             stud.a.p.push(val.id);
         });
+        incrementProgress();
         stud.a.u();
     });
     stud.j.u();
@@ -181,6 +183,7 @@ stud.a.u = function () {
         console.log('Asana Querys Complete' + u.t);
         stud.a.t = u.t;
         index_search();
+        incrementProgress();
     });
 };
 
@@ -247,6 +250,7 @@ stud.j.u = function () {
                 j['comments'] = val.fields.comment.comments[0] != null ? [{'user': val.fields.comment.comments[0].author.name,'comment': val.fields.comment.comments[0].body,}] : null;
             });
             index_search();
+            incrementProgress();
         });
 
 };
@@ -271,6 +275,7 @@ function update() {
                     'name': val.fields.summary
                 };
             });
+            incrementProgress();
         }));
     $.getJSON('https://app.asana.com/api/1.0/workspaces/5311864561437/projects?archived=false',
         function (data) {
@@ -309,7 +314,7 @@ function update() {
             });
             $.when.apply($, u.requests).then(function () {
             });
-
+            incrementProgress();
         });
 }
 
@@ -397,7 +402,9 @@ $(document).ready(function () {
         }
     });
     $('[data-toggle="tooltip"]').tooltip();
-    $("#reindex").click(stud.u);
+    $("#reindex").click(
+
+        stud.u);
     $(".dropdown-menu-replace li a").click(function () {
         var selText = $(this).text();
         $(this).parents('.dropdown').children('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
@@ -447,6 +454,30 @@ $(document).ready(function () {
         });
     });
 });
+
+function resetProgress()
+{
+    var progressBar = $("#reindexProgress");
+    console.log(progressBar);
+    progressBar.attr("data-percentage", "0");
+    progressBar.css('width', '0%');
+    progressBar.addClass("active");
+};
+
+function incrementProgress()
+{
+    var progressBar = $("#reindexProgress");
+    var percentage = progressBar.attr("data-percentage");
+    percentage += 50;
+    progressBar.attr("data-percentage", percentage);
+    progressBar.css('width', (percentage)+'%');
+
+    if (percentage >= 100)
+    {
+        progressBar.removeClass("active");
+    }
+
+};
 
 // [a:432423/u:ben+mccurdy/p:1/n:
 // [j:fdsfds/u:ben+mccurdy/p:n:
