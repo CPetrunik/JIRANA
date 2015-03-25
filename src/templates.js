@@ -10,8 +10,10 @@ templates['asanaTemplate'] = template({"1":function(depth0,helpers,partials,data
     + "</p>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression, buffer = 
-  "<div class=\"panel panel-primary\">\n      <div class=\"panel-heading\">"
-    + alias3(((helper = (helper = helpers.n || (depth0 != null ? depth0.n : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"n","hash":{},"data":data}) : helper)))
+  "<div class=\"panel panel-primary\">\n      <div class=\"panel-heading "
+    + alias3(((helper = (helper = helpers.panelColor || (depth0 != null ? depth0.panelColor : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"panelColor","hash":{},"data":data}) : helper)))
+    + "\">"
+    + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
     + "<span class=\"badge label-spacer\">"
     + alias3(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"status","hash":{},"data":data}) : helper)))
     + "</span></div>\n		<div class=\"panel-body\">\n			<div><h4><span class=\"label label-default\">Due: "
@@ -19,7 +21,7 @@ templates['asanaTemplate'] = template({"1":function(depth0,helpers,partials,data
     + "</span><span class=\"label label-default label-spacer\">"
     + alias3(((helper = (helper = helpers.module || (depth0 != null ? depth0.module : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"module","hash":{},"data":data}) : helper)))
     + "</span></h4></div>\n			<h3>Assignee: "
-    + alias3(((helper = (helper = helpers.u || (depth0 != null ? depth0.u : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"u","hash":{},"data":data}) : helper)))
+    + alias3(((helper = (helper = helpers.user || (depth0 != null ? depth0.user : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"user","hash":{},"data":data}) : helper)))
     + "</h3>\n            <h5>Description: "
     + alias3(((helper = (helper = helpers.desc || (depth0 != null ? depth0.desc : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"desc","hash":{},"data":data}) : helper)))
     + "</h5>\n			<div class=\"panel panel-default\">\n				<div class=\"panel-heading\">Comments</div>\n				<div class=\"panel-body\">\n";

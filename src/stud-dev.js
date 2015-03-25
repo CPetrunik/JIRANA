@@ -6,6 +6,16 @@ Handlebars.registerHelper('data', function (options) {
     return options.fn(stud.d[this]);
 });
 
+Handlebars.registerHelper('panelColor', function () {
+	console.log(this);
+   if(this.status == "Complete") {
+       return 'completed-asana'; } //if asana is complete return grayish green
+   else if(this.backlog == 1) {
+       return 'inc-backlog'; } //if asana is not complete but in backlog return blue
+   else {
+       return 'inc-frontlog'; } //if asana is not complete and in the frontlog return red orange
+});
+
 var stud = {};
 stud.c = {}; //config
 stud.a = {}; //asana
