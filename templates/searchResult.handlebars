@@ -1,19 +1,21 @@
-<tr class="searchResult" style="cursor:pointer;">
+<tr class="searchResult" style="cursor:default;">
     <td>
         {{#with j}}
         <input class="jira_id" type="hidden" value="{{this}}">
         {{#data}}
         <div class="row">
             <div class="col-xs-2">
+                <a href="{{jiraLink}}" target="_blank">
                 <div class="jira">
-                    <h4 style="margin-top:0px;margin-bottom:0px;"><a href="{{jiraLink}}" target="_blank">{{i}}</a></h4>
+                    <h4 style="margin-top:0px;margin-bottom:0px;">{{i}}</h4>
                 </div>
+                    </a>
             </div>
 
             <div class="col-xs-6">
                 <h4 style="margin-top:0px;margin-bottom:0px;padding-bottom:5px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{n}}</h4>
             </div>
-            <div class="col-xs-2 pull-left" style="text-align:right;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{user}}</div>
+            <div class="col-xs-2 pull-left" style="text-align:right;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{nameFormat user}}</div>
             <div class="col-xs-2 pull-right" style="text-align:right;"><span class="label label-default" >{{status}}</span>
             </div>
         </div>
@@ -25,7 +27,7 @@
         
         <div class="row">
             <div class="col-xs-2" style="text-align:right;">
-                <span class="label label-info" data-toggle="tooltip" data-animation="false" data-placement="left" title="Open"><a href="{{asanaLink}}" target="_blank"><span class="glyphicon glyphicon-link"></span></a></span>
+                <a href="{{asanaLink}}" target="_blank"><span class="label label-info" data-toggle="tooltip" data-animation="false" data-placement="left" title="Open"><span class="glyphicon glyphicon-link"></span></span></a>
             </div>
             <div class="col-xs-10">
                 {{name}}

@@ -264,26 +264,34 @@ border-bottom:2px solid #ddd;
     font-weight: bold; width:100%;border-radius:2px;background-color:#d9534f;color:#FFF;text-align:center;
 }
 
+/*
 .label-spacer{
     margin-top:5px;
 	margin-left:4px;
     margin-right: 10px;
 }
+*/
 
+/*
 .button-spacer{
     position: relative;
     right:10px;
 }
+*/
 
+/*
 .heading{
     min-height:40px;
 }
+*/
 
+/*
 .header-title
 {
     max-width: 400px;
     display: inline-block;
 }
+*/
 
 #item-container
 {
@@ -302,6 +310,7 @@ border-bottom:2px solid #ddd;
 	background-color:#F37949 !important;
 }
 
+/*
 a:link {
    color: white;
 }
@@ -309,6 +318,7 @@ a:link {
 a:visited {
    color: white;
 }
+*/
 
 #flash-message
 {

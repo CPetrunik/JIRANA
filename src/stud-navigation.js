@@ -5,8 +5,11 @@ function transitionToItem(itemNumber)
 {
 
     $("#search-out").fadeOut(function () {
-
-        $("#item-container").html(Handlebars.templates.parentTemplate(itemNumber));
+        if(itemNumber.charAt(0) === 'j'){
+            $("#item-container").html(Handlebars.templates.parentTemplate(itemNumber));
+        }else{
+            $("#item-container").html(Handlebars.templates.parentAsanaTemplate(itemNumber));
+        }
         $(".wdSlackButton").click(function (e) {
             var button = $(this);
             routeCorrectSlackOnID(button, itemNumber);

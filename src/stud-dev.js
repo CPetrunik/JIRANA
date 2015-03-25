@@ -6,14 +6,31 @@ Handlebars.registerHelper('data', function (options) {
     return options.fn(stud.d[this]);
 });
 
-Handlebars.registerHelper('panelColor', function () {
-   if(this.status == "Complete") {
-       return 'completed-asana'; } //if asana is complete return grayish green
-   else if(this.backlog == 1) {
-       return 'inc-backlog-asana'; } //if asana is not complete but in backlog return blue
-   else {
-       return 'inc-frontlog-asana'; } //if asana is not complete and in the frontlog return red orange
+Handlebars.registerHelper('nameFormat',function(name){
+    return name ? name.split(/[^a-zA-Z]+/g).join(' ').replace(/(?:^|\s)\S/g, function(a){return a.toUpperCase(); }) : "";
 });
+
+Handlebars.registerHelper('panelColor', function () {
+    console.log(new Date(this.date).getTime());
+   if(this.status == "Complete") {
+       return 'success'; } //if asana is complete return grayish green
+   else if(this.backlog == 1) {
+       return 'default'; } //if asana is not complete but in backlog return blue
+   
+   else if((new Date(this.date).getTime()) < (new Date().getTime() - (new Date().getTime() % 86400000))){
+       return 'danger'; } //if asana is not complete and in the frontlog return red orange
+    else{
+    return 'info';}
+});
+
+Handlebars.registerHelper('asanaComplete',function(){
+    if(this.status == "Complete"){
+        return new Handlebars.SafeString('<span class="glyphicon glyphicon-check" aria-hidden="true"></span>');
+    }else{
+        return new Handlebars.SafeString('<span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>');
+    }
+});
+
 
 Handlebars.registerHelper('jiraLink', function () {
 	return "https://jira2.workday.com/browse/" + this.index;
@@ -124,8 +141,8 @@ stud.a.u = function () {
                 "https://app.asana.com/api/1.0/projects/",
                 val,
                 "/tasks?modified_since=",
-                "'2014-10-21T00:00:00.000Z'",
-                "&opt_fields=name,assignee.name,tags.name,modified_at,completed,due_on,projects.name,notes,modified_at"
+                stud.a.t,
+                "&opt_fields=name,assignee.name,tags.name,modified_at,completed,due_on,projects.name,notes"
             ].join(''),
             function (data) {
                 $.each(data.data, function (key, val) {
@@ -154,14 +171,14 @@ stud.a.u = function () {
                             jira['i'] = jira['index'] = val.name.toUpperCase();
                         }
                     });
-                    u.t = [val.modified_at, stud.a.l].sort()[1];
+                    u.t = [val.modified_at, u.t].sort()[1];
                 });
             }
         ));
     });
     // On Update Complete
     $.when.apply($, u.r).then(function () {
-        console.log('Asana Querys Complete');
+        console.log('Asana Querys Complete' + u.t);
         stud.a.t = u.t;
         index_search();
     });
@@ -425,8 +442,8 @@ $(document).ready(function () {
         result = search($("#search").val());
         $("#search-out").html(Handlebars.templates.search(result));
         $(".searchResult").click(function (e) {
-            var jira_id = $(this).find(".jira_id").first().val();
-            transitionToItem(jira_id);
+            var task_id = $(this).find(".jira_id").first().val() || $(this).find(".asana_id").first().val();
+            transitionToItem(task_id);
         });
     });
 });

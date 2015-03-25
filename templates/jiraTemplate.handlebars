@@ -1,17 +1,16 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
-            <div class="heading">
-                <div class="header-title"><a href="{{jiraLink}}" target="_blank"><h5><span class="jira-id">{{i}}</span>: {{name}}</h5></a></div>
-                <span class="badge label-spacer pull-right">{{status}}</span>
-            </div>
+        <h6 class="panel-title">
+                <a href="{{jiraLink}}" target="_blank" style="color:inherit;"><span class="jira-id">{{i}}</span>: {{name}}</a>
+                <span class="badge label-spacer pull-right">{{status}}</span></h6>
     </div>
 	<div class="panel-body">
         <div class="row">
-            <div class="col-xs-6 col-md-4"><strong>Assignee:</strong> {{user}}</div>
+            <div class="col-xs-6 col-md-4"><strong>Assignee:</strong> {{nameFormat user}}</div>
             <div class="col-xs-6 col-md-4"><strong>Type:</strong> {{type}}</div>
         </div>
         <div class="row">
-            <div class="col-xs-6 col-md-4"><strong>Verified By:</strong> {{verifier}}</div>
+            <div class="col-xs-6 col-md-4"><strong>Verified By:</strong> {{nameFormat verifier}}</div>
             <div class="col-xs-6 col-md-4"><strong>Toggled By:</strong> {{toggle}}</div>
         </div>
         <div class="row">
