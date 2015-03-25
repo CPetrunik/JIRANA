@@ -1,0 +1,14 @@
+<div>
+{{#taskData}}
+	<div class="row">
+		<div class="col-xs-12">{{template "jiraTemplate"}}
+	</div>
+        {{#each l}}
+            {{#taskData}}
+            <div class="row">
+                <div class="col-xs-6">{{template "asanaTemplate"}}</div>
+            </div>
+            {{/taskData}}
+        {{/each}}
+{{/taskData}}
+</div>

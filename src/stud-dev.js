@@ -7,6 +7,9 @@ Handlebars.registerHelper('data', function (options) {
     return options.fn(stud.d[this.replace(/\x5b/g, '').replace(/\x5c[a-z0-9+]*\x5d/g, '')]);
 });
 
+Handlebars.registerHelper('taskData', function (options) {
+    return options.fn(stud.d[this]);
+});
 
 var stud = {};
 stud.c = {}; //config
