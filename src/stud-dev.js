@@ -7,6 +7,9 @@ Handlebars.registerHelper('data', function (options) {
     return options.fn(stud.d[this.replace(/\x5b/g, '').replace(/\x5c[a-z0-9+]*\x5d/g, '')]);
 });
 
+Handlebars.registerHelper('taskData', function (options) {
+    return options.fn(stud.d[this]);
+});
 
 var stud = {};
 stud.c = {}; //config
@@ -185,6 +188,7 @@ stud.j.u = function () {
                 //console.log(val.key);
                 stud.d['j:' + val.key] = {
                     'i': val.key,
+                    'index': val.key,                    
                     'n': val.fields.summary,
                     'u': val.fields.assignee.name,
                     'name': val.fields.summary,
@@ -372,6 +376,11 @@ $(document).ready(function () {
         $('a[href="#sdd-main"]').tab('show');
         result = search($("#search").val());
         $("#search-out").html(Handlebars.templates.search(result));
+        $(".searchResult").click(function (e) {
+            var h4Array = $(this).find("h4");
+            var itemNumber = $(h4Array[0]).text();
+            transitionToItem(itemNumber);
+        });
     });
 });
 

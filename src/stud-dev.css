@@ -285,3 +285,7 @@ border-bottom:2px solid #ddd;
     display: inline-block;
 }
 
+#item-container
+{
+    display: none;
+}
