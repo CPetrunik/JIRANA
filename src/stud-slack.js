@@ -20,11 +20,11 @@
 <li><a href="#" class="wdSlackButton customMessage">Custom Message...</a></li>
 </ul>
 </div>*/
+var jira;
 
 function routeCorrectSlackOnID(button, itemID)
 {
-    console.log(stud.d["j:" + itemID]);
-    var jira = stud.d["j:" + itemID];
+    jira = stud.d["j:" + itemID];
 
     if (button.hasClass("pingAssignee"))
     {
@@ -60,7 +60,11 @@ function routeCorrectSlackOnID(button, itemID)
 }
 
 $(".sendCustomMessage").click(function (e) {
-    alert('here');
+    var recipientInput = $(this).closest("#recipient-name");
+    var messageInput = $(this).closest("#message-text");
+
+    alert($(recipientInput).val());
+    alert($(messageInput).val());
 });
 
 
