@@ -65,7 +65,7 @@ $(".sendCustomMessage").click(function (e) {
     var recipientInput = $(modalContent).find("#recipient-name");
     var messageInput = $(modalContent).find("#message-text");
 
-    sendSlack(jira, "@" + recipientInput.val(), "New Message", messageInput.val());
+    sendSlack(jira, "@" + recipientInput.val(), messageInput.val(), "Custom Ping");
 });
 
 
