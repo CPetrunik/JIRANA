@@ -289,3 +289,15 @@ border-bottom:2px solid #ddd;
 {
     display: none;
 }
+
+.completed-asana{
+	background-color:#B4C09B !important;
+}
+
+.inc-backlog-asana{
+	background-color:#0067AC !important;
+}
+
+.inc-frontlog-asana{
+	background-color:#F37949 !important;
+}
