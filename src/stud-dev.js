@@ -125,7 +125,7 @@ stud.a.u = function () {
                 val,
                 "/tasks?modified_since=",
                 "'2014-10-21T00:00:00.000Z'",
-                "&opt_fields=name,assignee.name,tags.name,modified_at,completed,due_on,projects.name,notes"
+                "&opt_fields=name,assignee.name,tags.name,modified_at,completed,due_on,projects.name,notes,modified_at"
             ].join(''),
             function (data) {
                 $.each(data.data, function (key, val) {
@@ -140,6 +140,7 @@ stud.a.u = function () {
                     a['desc'] = val.notes;
                     a['module'] = val.projects[0].name;
                     a['backlog'] = val.projects[0].name !== null ? val.projects[0].name.indexOf('Backlog') > -1 : false;
+                    a['modified'] = new Date(val.modified_at).getTime();
                     a['l'] = [];
                     $.each(val.tags, function (key, val) {
                         if (val.name.toLowerCase().match(/^[a-z]+[\-][0-9]+$/)) {
@@ -160,6 +161,7 @@ stud.a.u = function () {
     });
     // On Update Complete
     $.when.apply($, u.r).then(function () {
+        console.log('Asana Querys Complete');
         stud.a.t = u.t;
         index_search();
     });
@@ -211,7 +213,6 @@ stud.j.u = function () {
         ].join(''),
         function (data) {
             $.each(data.issues, function (key, val) {
-                //console.log(val.key);
                 var j = stud.g('j:' + val.key);
                 j['i'] = val.key;
                 j['index'] = val.key;                    
@@ -223,7 +224,8 @@ stud.j.u = function () {
                 j['type']= val.fields.issuetype.name;
                 j['verifier'] = val.fields.customfield_10213 != null ? val.fields.customfield_10213.name : null;
                 j['toggle']= val.fields.customfield_10306 != null ? val.fields.customfield_10306[0] : null;
-                j['fix']= val.fields.fixVersions[0] != null ? val.fields.fixVersions[0].name : null;  
+                j['fix']= val.fields.fixVersions[0] != null ? val.fields.fixVersions[0].name : null;
+                j['modified'] = new Date(val.fields.updated).getTime();
             });
             index_search();
         });
@@ -250,11 +252,9 @@ function update() {
                     'name': val.fields.summary
                 };
             });
-            //console.log(data);
         }));
     $.getJSON('https://app.asana.com/api/1.0/workspaces/5311864561437/projects?archived=false',
         function (data) {
-            //console.log(data.data.length);
             $.each(data.data, function (key, val) {
                 u.requests.push($.getJSON(
                 [
@@ -265,7 +265,6 @@ function update() {
                     "&opt_fields=name,assignee,tags.name,modified_at,completed"
                 ].join(''),
                     function (data) {
-                        //console.log(data.data);
                         $.each(data.data, function (key, val) {
                             stud.last.a = [val.modified_at, stud.last.a].sort()[1];
                             u.data['i:' + val.id] = {
@@ -276,7 +275,6 @@ function update() {
                                     var jiras = [];
                                     $.each(val.tags, function (key, val) {
                                         if (val.name.toLowerCase().match(/^[a-z]+[-][0-9]+$/)) {
-                                            //console.log('jira ' + val.name);
                                             jiras.push(val.name.toUpperCase());
                                         }
                                     });
@@ -291,12 +289,9 @@ function update() {
                 ));
             });
             $.when.apply($, u.requests).then(function () {
-                //console.log(u.data);
-                //console.log(added);
             });
 
         });
-    console.log('run');
 }
 
 function search(str) {
@@ -328,18 +323,44 @@ function search(str) {
                     }
                 });
                 if(stud.d[val].l.length === 0){
-                    links.push({j: '', a:[val]});
-                
+                    links.push({j: '', a:[val]});   
                 }
             }
-               
-            //console.log(val);
         });
-        console.log("LINKS");
-        console.log(links);
+        
+        links = links.sort(function(a,b){
+            var adates = [];
+            if(a.j!== "" && stud.d[a.j].modified){
+                adates.push(stud.d[a.j].modified);
+            }
+            $.each(a.a, function(key,val){
+                adates.push(stud.d[val].modified);
+            });
+            adates = adates.sort();
+            
+            var bdates = [];
+            if(b.j!== "" && stud.d[b.j].modified){
+                bdates.push(stud.d[b.j].modified);
+            }
+            $.each(b.a, function(key,val){
+                bdates.push(stud.d[val].modified);
+            });
+            bdates = bdates.sort();
+            return - (adates[adates.length-1] - bdates[bdates.length-1]);
+        });
+
+        $.each(links,function(key,val){
+            var adates = [];
+            if(val.j!== "" && stud.d[val.j].modified){
+                adates.push(stud.d[val.j].modified);
+            }
+            $.each(val.a, function(key,val){
+        
+                adates.push(stud.d[val].modified);
+            });
+        });
         return links;
         var results = "";
-        //console.log(stud.i.match(new RegExp(query, "g")));
         return stud.i.match(new RegExp(query, "g")) || [];
     }
     return [];
@@ -347,13 +368,11 @@ function search(str) {
 
 $(document).ready(function () {
     chrome.storage.local.get("d", function (data) {
-        //console.log(data.d);
         if (data.d) {
             stud.d = data.d;
         }
     });
     chrome.storage.local.get("i", function (data) {
-        //console.log(data.i);
         if (data.i) {
             stud.i = data.i;
         }
@@ -405,9 +424,6 @@ $(document).ready(function () {
         $("#search-out").html(Handlebars.templates.search(result));
         $(".searchResult").click(function (e) {
             var jira_id = $(this).find(".jira_id").first().val();
-            //var itemNumber = $(h4Array[0]).text();
-            
-            //console.log(jira_id);
             transitionToItem(jira_id);
         });
     });
