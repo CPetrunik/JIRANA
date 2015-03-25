@@ -7,19 +7,15 @@
                 </button>
             </div>
         </div>
-
         {{#data}}
         <div class="row">
             <div class="col-xs-12">{{template "jiraTemplate"}}</div>
         </div>
-
         <div class="row">
             {{#each l}} {{#data}}
             <div class="col-xs-6">{{template "asanaTemplate"}}</div>
             {{/data}} {{/each}}
         </div>
-
         {{/data}}
-
     </div>
 </div>
