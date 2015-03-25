@@ -21,24 +21,33 @@
 </ul>
 </div>*/
 
-$(".wdSlackButton").click(function (e) {
+function routeCorrectSlackOnID(button, itemID)
+{
+    console.log(stud.d["j:" + itemID]);
+    var jira = stud.d["j:" + itemID];
 
-    var button = $(this);
     if (button.hasClass("pingAssignee"))
     {
-        sendSlack("@frank.law", "Ping");
+        sendSlack(jira, "@"+jira.u,  "Ping");
     }
     else if (button.hasClass("resolveAssignee"))
     {
-        sendSlack("@frank.law", "Please Resolve This");
+        sendSlack(jira, "@"+jira.u, "Please Resolve This");
     }
     else if (button.hasClass("commentAssignee"))
     {
-        sendSlack("@frank.law", "Please add a comment");
+        sendSlack(jira, "@"+jira.u, "Please add a comment");
     }
     else if (button.hasClass("pingQALead"))
     {
-         sendSlack("@frank.law", "Ping QA");
+        if (jira.verifier)
+        {
+            sendSlack(jira, "@"+jira.verifier, "Ping QA");
+        }
+        else
+        {
+            alert('No QA Verifier assigned');
+        }
     }
     else if (button.hasClass("customMessage"))
     {
@@ -48,9 +57,7 @@ $(".wdSlackButton").click(function (e) {
     {
         alert("not mapped");
     }
-
-    e.preventDefault();
-});
+}
 
 $(".sendCustomMessage").click(function (e) {
     alert('here');
@@ -60,26 +67,32 @@ $(".sendCustomMessage").click(function (e) {
 
 
 
-function sendSlack(channel, comment) {
+function sendSlack(jira, channel, comment, message) {
+
+    message = (typeof message === 'undefined') ? '' : message;
 
     // construct an HTTP request
     var xhr = new XMLHttpRequest();
     xhr.open("post", "https://hooks.slack.com/services/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", true);
 
+    var title = jira.i;
+    title += (jira.n) ? ": " + jira.n : "";
+    title += (jira.type) ? " ["+ jira.type + "] " : "";
+    title += "<https://jira2.workday.com/browse/" + jira.i + "| - Click to goto Jira>";
     var data=
     {
-        "text":comment,
+        "text":message,
         "channel":channel,
         "username": "jirana",
         "attachments":[
             {
-                "fallback":"New open task [Urgent]: <http://url_to_task|Test out Slack message attachments>",
-                "pretext":"New open task [Urgent]: <http://url_to_task|Test out Slack message attachments>",
+                "fallback":title,
+                "pretext":title,
                 "color":"#D00000",
                 "fields":[
                     {
-                        "title":"Notes",
-                        "value":"This is much easier than I thought it would be.",
+                        "title":"Message",
+                        "value":comment,
                         "short":false
                     }
                 ]

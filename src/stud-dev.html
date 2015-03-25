@@ -20,9 +20,9 @@
                 </div>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#sdd-sprint" class="nav nav-tab" data-toggle="tab" style="height:50px;">S<span style="font-size:75%;">PRINT</span></a>
+                <li><a href="#sdd-sprint hidden" class="nav nav-tab" data-toggle="tab" style="height:50px;">S<span style="font-size:75%;">PRINT</span></a>
                 </li>
-                <li><a href="#sdd-automation" class="nav nav-tab" data-toggle="tab" style="height:50px;">A<span style="font-size:75%;">UTOMATION</span></a>
+                <li><a href="#sdd-automation hidden" class="nav nav-tab" data-toggle="tab" style="height:50px;">A<span style="font-size:75%;">UTOMATION</span></a>
                 </li>
                 <li><a href="#sdd-settings" class="nav nav-tab" data-toggle="tab" style="height:50px;">S<span style="font-size:75%;">ETTINGS</span></a>
                 </li>
@@ -32,8 +32,9 @@
 
     <div class="tab-content" id="content">
         <div class="tab-pane active" id="sdd-main" style="width:100%;">
-            <div id="item-container">frank</div>
+            <div id="item-container" class="container" style="width:100%;">frank</div>          
             <div id="search-out"></div>
+            <!--
             <div id="floatingCirclesG" style="margin:auto;">
                 <div class="f_circleG" id="frotateG_01">
                 </div>
@@ -52,6 +53,7 @@
                 <div class="f_circleG" id="frotateG_08">
                 </div>
             </div>
+            -->
         </div>
         <div class="tab-pane container" id="sdd-sprint">
             
@@ -197,6 +199,34 @@
 
     </div>
     <!-- /.container -->
+
+    <!-- modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Send Asana</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">Recipient:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">Message:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-primary sendCustomMessage" >Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="/lib/jquery.min.js"></script>
     <script src="/lib/bootstrap.min.js"></script>
