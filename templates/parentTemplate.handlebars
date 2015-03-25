@@ -1,16 +1,18 @@
 <input type="button" id="returnToSearch" class="btn" value="<- back"/>
 
 <div>
-{{#taskData}}
+{{#data}}
 	<div class="row">
-		<div class="col-xs-12">{{template "jiraTemplate"}}
+        <div class="col-xs-12">{{template "jiraTemplate"}}</div>
 	</div>
-        {{#each l}}
-            {{#taskData}}
-            <div class="row">
+
+    <div class="row">
+                        {{#each l}}
+            {{#data}}
                 <div class="col-xs-6">{{template "asanaTemplate"}}</div>
-            </div>
-            {{/taskData}}
+                 {{/data}}
         {{/each}}
-{{/taskData}}
+    </div>
+           
+{{/data}}
 </div>

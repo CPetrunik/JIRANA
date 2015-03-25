@@ -3,11 +3,6 @@ Handlebars.registerHelper('template', function (templateName, context) {
 });
 
 Handlebars.registerHelper('data', function (options) {
-    //console.log(this.replace(/\x5b/g, '').replace(/\x5c[a-z0-9+]*\x5d/g, ''));
-    return options.fn(stud.d[this.replace(/\x5b/g, '').replace(/\x5c[a-z0-9+]*\x5d/g, '')]);
-});
-
-Handlebars.registerHelper('taskData', function (options) {
     return options.fn(stud.d[this]);
 });
 
@@ -126,6 +121,7 @@ stud.a.u = function () {
                     $.each(val.tags, function (key, val) {
                         if (val.name.toLowerCase().match(/^[a-z]+[\-][0-9]+$/)) {
                             a['l'].push(val.name.toUpperCase());
+                            stud.g('j:' + val.name.toUpperCase()).l.push('a:' + a['i']);
                         }
                     });
                     u.t = [val.modified_at, stud.a.l].sort()[1];
@@ -186,18 +182,18 @@ stud.j.u = function () {
         function (data) {
             $.each(data.issues, function (key, val) {
                 //console.log(val.key);
-                stud.d['j:' + val.key] = {
-                    'i': val.key,
-                    'index': val.key,                    
-                    'n': val.fields.summary,
-                    'u': val.fields.assignee.name,
-                    'name': val.fields.summary,
-                    'user': val.fields.assignee.name,
-                    'type': val.fields.issuetype.name,
-                    'verifier': val.fields.customfield_10213 != null ? val.fields.customfield_10213.name : null,
-                    'toggle': val.fields.customfield_10306 != null ? val.fields.customfield_10306[0] : null,
-                    'fix': val.fields.fixVersions[0] != null ? val.fields.fixVersions[0].name : null
-                };
+                var j = stud.g('j:' + val.key);
+                j['i'] = val.key;
+                j['index'] = val.key;                    
+                j['n'] = val.fields.summary;
+                j['u'] = val.fields.assignee.name;
+                j['name'] = val.fields.summary;
+                j['user']= val.fields.assignee.name;
+                j['type']= val.fields.issuetype.name;
+                j['verifier'] = val.fields.customfield_10213 != null ? val.fields.customfield_10213.name : null;
+                j['toggle']= val.fields.customfield_10306 != null ? val.fields.customfield_10306[0] : null;
+                j['fix']= val.fields.fixVersions[0] != null ? val.fields.fixVersions[0].name : null;
+                
             });
             index_search();
         });
