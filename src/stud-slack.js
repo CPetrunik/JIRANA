@@ -70,14 +70,6 @@ $(".sendCustomMessage").click(function (e) {
     var messageInput = $(modalContent).find("#message-text");
 
     var recipient = recipientInput.val();
-    if (recipient.charAt(0) === '#')
-    {
-        recipient = recipient.replace('#', '');
-    }
-    else
-    {
-        recipient = "@" + recipient;
-    }
     sendSlack(item, recipient, messageInput.val(), "Custom Ping");
 });
 
