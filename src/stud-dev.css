@@ -309,3 +309,11 @@ a:link {
 a:visited {
    color: white;
 }
+
+#flash-message
+{
+    display:none;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin: 0;
+}
