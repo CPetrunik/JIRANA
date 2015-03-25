@@ -7,6 +7,16 @@ Handlebars.registerHelper('data', function (options) {
     return options.fn(stud.d[this]);
 });
 
+Handlebars.registerHelper('panelColor', function () {
+	console.log(this);
+   if(this.status == "Complete") {
+       return 'completed-asana'; } //if asana is complete return grayish green
+   else if(this.backlog == 1) {
+       return 'inc-backlog-asana'; } //if asana is not complete but in backlog return blue
+   else {
+       return 'inc-frontlog-asana'; } //if asana is not complete and in the frontlog return red orange
+});
+
 var stud = {};
 stud.c = {}; //config
 stud.a = {}; //asana
@@ -123,12 +133,17 @@ stud.a.u = function () {
                     a['date'] = val.due_on;
                     a['desc'] = val.notes;
                     a['module'] = val.projects[0].name;
+                    a['backlog'] = val.projects[0].name !== null ? val.projects[0].name.indexOf('Backlog') > -1 : false;
                     a['l'] = [];
                     $.each(val.tags, function (key, val) {
                         if (val.name.toLowerCase().match(/^[a-z]+[\-][0-9]+$/)) {
-                            a['l'].push(val.name.toUpperCase());
+                            if($.inArray(val.name.toUpperCase(),a['l']) == -1){
+                               a['l'].push(val.name.toUpperCase());
+                               }
                             var j = stud.g('j:' + val.name.toUpperCase());
-                            j.l.push('a:' + a['i']);
+                            if($.inArray('a:' + a['i'], j.l) == -1){ 
+                                 j.l.push('a:' + a['i']);
+                            }
                             j['i'] = j['index'] = val.name.toUpperCase();
                         }
                     });
@@ -139,9 +154,6 @@ stud.a.u = function () {
     });
     // On Update Complete
     $.when.apply($, u.r).then(function () {
-        chrome.storage.local.set({
-            "d": stud.d
-        });
         stud.a.t = u.t;
         index_search();
     });
@@ -156,9 +168,12 @@ function index_search() {
         }
     });
     stud.i = i;
-    // chrome.storage.local.set({
-//         "i": stud.i
-//     });
+     chrome.storage.local.set({
+         "i": stud.i
+     });
+    chrome.storage.local.set({
+            "d": stud.d
+        });
 }
 
 stud.a.r = function (p, t) {
@@ -201,8 +216,7 @@ stud.j.u = function () {
                 j['type']= val.fields.issuetype.name;
                 j['verifier'] = val.fields.customfield_10213 != null ? val.fields.customfield_10213.name : null;
                 j['toggle']= val.fields.customfield_10306 != null ? val.fields.customfield_10306[0] : null;
-                j['fix']= val.fields.fixVersions[0] != null ? val.fields.fixVersions[0].name : null;
-                
+                j['fix']= val.fields.fixVersions[0] != null ? val.fields.fixVersions[0].name : null;  
             });
             index_search();
         });
@@ -312,7 +326,7 @@ function search(str) {
                 }
             }
                
-            console.log(val);
+            //console.log(val);
         });
         console.log("LINKS");
         console.log(links);
