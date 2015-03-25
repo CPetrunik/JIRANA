@@ -2,20 +2,6 @@
     <div class="panel-heading">
             <div class="heading">
                 <div class="header-title"><a href="{{jiraLink}}" target="_blank"><h5><span class="jira-id">{{i}}</span>: {{name}}</h5></a></div>
-                <div class="btn-group pull-right fix-header">
-                    <button type="button" class="btn btn-warning wdSlackButton pingAssignee">Ping Assignee</button>
-                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                    <li><a href="#" class="wdSlackButton resolveAssignee">Tell Assignee to Resolve Jira</a></li>
-                    <li><a href="#" class="wdSlackButton commentAssignee">Tell Assignee to Comment</a></li>
-                    <li><a href="#" class="wdSlackButton pingQALead">Ping QA Lead</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#" class="wdSlackButton customMessage" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Custom Message...</a></li>
-                    </ul>
-                </div>
                 <span class="badge label-spacer pull-right">{{status}}</span>
             </div>
     </div>

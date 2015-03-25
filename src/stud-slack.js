@@ -46,7 +46,7 @@ function routeCorrectSlackOnID(button, itemID)
         }
         else
         {
-            alert('No QA Verifier assigned');
+            sendFlashMessage('No QA Verifier assigned', 'DANGER');
         }
     }
     else if (button.hasClass("customMessage"))
@@ -105,6 +105,61 @@ function sendSlack(jira, channel, comment, message, colorCode) {
             }
         ]
     };
+
+    xhr.onreadystatechange = function() {//Call a function when the state changes.
+        var message = "";
+        var type;
+        if(xhr.readyState == 4 && xhr.status == 200)
+        {
+            message = "Message sent!"
+            type = "SUCCESS";
+        }
+        else if (xhr.readyState == 4 && xhr.status == 500)
+        {
+           message = "Something went wrong.";
+            type = "DANGER";
+        }
+
+        sendFlashMessage(message, type);
+    }
     xhr.send(JSON.stringify(data));
+};
+
+
+function sendFlashMessage(message, type)
+{
+    type = (typeof type === 'undefined') ? 'SUCCESS' : type;
+
+    var flashDiv = $("#flash-message");
+    // clean up old styles
+    flashDiv.removeClass('alert-success');
+    flashDiv.removeClass('alert-danger');
+
+    // Add new styles
+    if(type == 'SUCCESS')
+    {
+        flashDiv.addClass('alert-success');
+    }
+    else if (type == 'DANGER')
+    {
+        flashDiv.addClass('alert-danger');
+    }
+
+    var flashMessageSpan = $('#flash-message-text');
+
+    flashMessageSpan.text(message);
+
+    flashDiv.fadeIn();
+    if( flashDiv.is(':visible') )
+    {
+        // it's visible, do something
+    }
+    else
+    {
+        flashDiv.fadeIn();
+    }
+
+    setInterval(function () {flashDiv.fadeOut();}, 5000);
+
 };
 
