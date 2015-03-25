@@ -208,7 +208,7 @@ stud.j.u = function () {
             'https://jira2.workday.com/rest/api/2/search?jql=',
             'project%20%3D%20STU%20AND%20updated%20>%20"2014-11-24%2018%3A05"', //JQL REQUEST
             '&fields=',
-            'key,customfield_10213,customfield_10306,assignee,issuetype,status,summary,updated,fixVersions', // FIELDS
+            'key,customfield_10213,customfield_10306,assignee,issuetype,status,summary,updated,fixVersions,comment', // FIELDS
             '&maxResults=3000'
         ].join(''),
         function (data) {
@@ -226,6 +226,8 @@ stud.j.u = function () {
                 j['toggle']= val.fields.customfield_10306 != null ? val.fields.customfield_10306[0] : null;
                 j['fix']= val.fields.fixVersions[0] != null ? val.fields.fixVersions[0].name : null;
                 j['modified'] = new Date(val.fields.updated).getTime();
+                j['updated']= val.fields.updated;
+                j['comments'] = val.fields.comment.comments[0] != null ? [{'user': val.fields.comment.comments[0].author.name,'comment': val.fields.comment.comments[0].body,}] : null;
             });
             index_search();
         });
