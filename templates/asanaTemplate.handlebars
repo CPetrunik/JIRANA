@@ -1,0 +1,21 @@
+<div class="panel panel-{{panelColor}}">
+    <div class="panel-heading">
+        <h6 class="panel-title">
+            {{asanaComplete}} <a href="{{asanaLink}}" target="_blank" style="color:inherit;">{{name}}</a></h6>
+            <div style="margin-top:10px;">{{nameFormat user}}&nbsp;<div class="badge pull-right" style="clear:none;">{{module}}</div></div>
+        
+    </div>
+    <div class="panel-body">
+        <strong>Due:</strong> {{date}}
+        <br>
+        <strong>Description: </strong><span style="word-wrap: break-word;">{{desc}}</span>
+    </div>
+    <ul class="list-group">
+        {{#each comments}}
+        <li class="list-group-item">
+            <h5 class="list-group-item-heading">{{nameFormat user}}</h5>
+            <p class="list-group-item-text">{{comment}}</p>
+        </li>
+        {{/each}}
+    </ul>
+</div>

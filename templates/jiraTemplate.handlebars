@@ -1,0 +1,30 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h6 class="panel-title">
+                <a href="{{jiraLink}}" target="_blank" style="color:inherit;"><span class="jira-id">{{i}}</span>: {{name}}</a>
+                <span class="badge label-spacer pull-right">{{status}}</span></h6>
+    </div>
+	<div class="panel-body">
+        <div class="row">
+            <div class="col-xs-6 col-md-4"><strong>Assignee:</strong> {{nameFormat user}}</div>
+            <div class="col-xs-6 col-md-4"><strong>Type:</strong> {{type}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-4"><strong>Verified By:</strong> {{nameFormat verifier}}</div>
+            <div class="col-xs-6 col-md-4"><strong>Toggled By:</strong> {{toggle}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-4"><strong>Fix Version:</strong> {{fix}}</div>
+            <div class="col-xs-6 col-md-4">&nbsp;</div>
+        </div>
+        <p></p>
+		<div class="panel panel-default">
+			<div class="panel-heading">Latest Comment</div>
+			<div class="panel-body">
+				{{#comments}}
+				<p class="commentrow">{{user}}: {{comment}}</p>
+				{{/comments}}
+			</div>
+			</div>            			
+	</div>
+</div>

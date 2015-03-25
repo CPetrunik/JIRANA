@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="row" style="padding-top:15px;padding-bottom:15px; min-height: 50px;">
+            <div class="col-xs-5">
+                <button type="button" id="returnToSearch" class="btn btn-default btn-md">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+                </button>
+            </div>
+            <div class="col-xs-4">
+                <div class="alert alert-success" role="alert" id="flash-message"> <span id="flash-message-text"></span></div>
+            </div>
+            <div class="col-xs-3">
+                <div class="btn-group pull-right fix-header">
+                    <button type="button" class="btn btn-warning wdSlackButton pingAssignee">Ping Assignee</button>
+                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#" class="wdSlackButton resolveAssignee">Tell Assignee to Resolve Jira</a></li>
+                        <li><a href="#" class="wdSlackButton commentAssignee">Tell Assignee to Comment</a></li>
+                        <li><a href="#" class="wdSlackButton pingQALead">Ping QA Lead</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" class="wdSlackButton customMessage" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Custom Message...</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{#data}}
+        <div class="row">
+            <div class="col-xs-12">{{template "jiraTemplate"}}</div>
+        </div>
+        <div class="row">
+            {{#each l}} {{#data}}
+            <div class="col-xs-6">{{template "asanaTemplate"}}</div>
+            {{/data}} {{/each}}
+        </div>
+        {{/data}}
+    </div>
+</div>
