@@ -3,6 +3,7 @@ Handlebars.registerHelper('template', function (templateName, context) {
 });
 
 Handlebars.registerHelper('data', function (options) {
+    console.log(stud.d[this]);
     return options.fn(stud.d[this]);
 });
 
@@ -372,7 +373,7 @@ $(document).ready(function () {
     //    //});
 
     // Fuzzy search on input change after 3 characters
-    $("#search").on("change keyup", function () {
+    $("#search").on("keyup", function () {
         var result;
         chrome.storage.local.set({
             "s": $("#search").val()
