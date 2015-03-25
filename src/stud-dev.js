@@ -19,6 +19,10 @@ Handlebars.registerHelper('jiraLink', function () {
 	return "https://jira2.workday.com/browse/" + this.index;
 });
 
+Handlebars.registerHelper('asanaLink', function () {
+	return "https://app.asana.com/0/0/" + this.i + "/f";
+});
+
 var stud = {};
 stud.c = {}; //config
 stud.a = {}; //asana

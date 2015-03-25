@@ -12,17 +12,19 @@ templates['asanaTemplate'] = template({"1":function(depth0,helpers,partials,data
     var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression, buffer = 
   "<div class=\"panel panel-default\">\n      <div class=\"panel-heading "
     + alias3(((helper = (helper = helpers.panelColor || (depth0 != null ? depth0.panelColor : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"panelColor","hash":{},"data":data}) : helper)))
-    + "\">"
+    + "\"><a href=\""
+    + alias3(((helper = (helper = helpers.asanaLink || (depth0 != null ? depth0.asanaLink : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"asanaLink","hash":{},"data":data}) : helper)))
+    + "\" target=\"_blank\">"
     + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
-    + "<span class=\"badge label-spacer\">"
+    + "</a><span class=\"badge label-spacer\">"
     + alias3(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"status","hash":{},"data":data}) : helper)))
     + "</span></div>\n		<div class=\"panel-body\">\n			<div><h4><span class=\"label label-default\">Due: "
     + alias3(((helper = (helper = helpers.date || (depth0 != null ? depth0.date : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"date","hash":{},"data":data}) : helper)))
     + "</span><span class=\"label label-default label-spacer\">"
     + alias3(((helper = (helper = helpers.module || (depth0 != null ? depth0.module : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"module","hash":{},"data":data}) : helper)))
-    + "</span></h4></div>\n			<h3>Assignee: "
+    + "</span></h4></div>\n			<h5>Assignee: "
     + alias3(((helper = (helper = helpers.user || (depth0 != null ? depth0.user : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"user","hash":{},"data":data}) : helper)))
-    + "</h3>\n            <h5>Description: "
+    + "</h5>\n            <h5>Description: "
     + alias3(((helper = (helper = helpers.desc || (depth0 != null ? depth0.desc : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"desc","hash":{},"data":data}) : helper)))
     + "</h5>\n			<div class=\"panel panel-default\">\n				<div class=\"panel-heading\">Comments</div>\n				<div class=\"panel-body\">\n";
   stack1 = ((helper = (helper = helpers.comments || (depth0 != null ? depth0.comments : depth0)) != null ? helper : alias1),(options={"name":"comments","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data}),(typeof helper === alias2 ? helper.call(depth0,options) : helper));
@@ -40,11 +42,13 @@ templates['jiraTemplate'] = template({"1":function(depth0,helpers,partials,data)
     + "</p>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression, buffer = 
-  "<div class=\"panel panel-primary\">\n    <div class=\"panel-heading\">\n            <div class=\"heading\">\n                <div class=\"header-title\"><h5><span class=\"jira-id\">"
+  "<div class=\"panel panel-primary\">\n    <div class=\"panel-heading\">\n            <div class=\"heading\">\n                <div class=\"header-title\"><a href=\""
+    + alias3(((helper = (helper = helpers.jiraLink || (depth0 != null ? depth0.jiraLink : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"jiraLink","hash":{},"data":data}) : helper)))
+    + "\" target=\"_blank\"><h5><span class=\"jira-id\">"
     + alias3(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"i","hash":{},"data":data}) : helper)))
     + "</span>: "
     + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</h5></div>\n                <div class=\"btn-group pull-right fix-header\">\n                    <button type=\"button\" class=\"btn btn-warning wdSlackButton pingAssignee\">Ping Assignee</button>\n                    <button type=\"button\" class=\"btn btn-warning dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\">\n                    <span class=\"caret\"></span>\n                    <span class=\"sr-only\">Toggle Dropdown</span>\n                    </button>\n                    <ul class=\"dropdown-menu\" role=\"menu\">\n                    <li><a href=\"#\" class=\"wdSlackButton resolveAssignee\">Tell Assignee to Resolve Jira</a></li>\n                    <li><a href=\"#\" class=\"wdSlackButton commentAssignee\">Tell Assignee to Comment</a></li>\n                    <li><a href=\"#\" class=\"wdSlackButton pingQALead\">Ping QA Lead</a></li>\n                    <li class=\"divider\"></li>\n                    <li><a href=\"#\" class=\"wdSlackButton customMessage\" data-toggle=\"modal\" data-target=\"#exampleModal\" data-whatever=\"@getbootstrap\">Custom Message...</a></li>\n                    </ul>\n                </div>\n                <span class=\"badge label-spacer pull-right\">"
+    + "</h5></a></div>\n                <div class=\"btn-group pull-right fix-header\">\n                    <button type=\"button\" class=\"btn btn-warning wdSlackButton pingAssignee\">Ping Assignee</button>\n                    <button type=\"button\" class=\"btn btn-warning dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\">\n                    <span class=\"caret\"></span>\n                    <span class=\"sr-only\">Toggle Dropdown</span>\n                    </button>\n                    <ul class=\"dropdown-menu\" role=\"menu\">\n                    <li><a href=\"#\" class=\"wdSlackButton resolveAssignee\">Tell Assignee to Resolve Jira</a></li>\n                    <li><a href=\"#\" class=\"wdSlackButton commentAssignee\">Tell Assignee to Comment</a></li>\n                    <li><a href=\"#\" class=\"wdSlackButton pingQALead\">Ping QA Lead</a></li>\n                    <li class=\"divider\"></li>\n                    <li><a href=\"#\" class=\"wdSlackButton customMessage\" data-toggle=\"modal\" data-target=\"#exampleModal\" data-whatever=\"@getbootstrap\">Custom Message...</a></li>\n                    </ul>\n                </div>\n                <span class=\"badge label-spacer pull-right\">"
     + alias3(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"status","hash":{},"data":data}) : helper)))
     + "</span>\n            </div>\n    </div>\n	<div class=\"panel-body\">\n        <div class=\"row\">\n            <div class=\"col-xs-6 col-md-4\"><strong>Assignee:</strong> "
     + alias3(((helper = (helper = helpers.user || (depth0 != null ? depth0.user : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"user","hash":{},"data":data}) : helper)))
@@ -116,7 +120,7 @@ templates['searchResult'] = template({"1":function(depth0,helpers,partials,data)
 
   return "        <div class=\"row\">\n            <div class=\"col-xs-2\">\n                <div class=\"jira\">\n                    <h4 style=\"margin-top:0px;margin-bottom:0px;\"><a href=\""
     + alias3(((helper = (helper = helpers.jiraLink || (depth0 != null ? depth0.jiraLink : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"jiraLink","hash":{},"data":data}) : helper)))
-    + "\">"
+    + "\" target=\"_blank\">"
     + alias3(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"i","hash":{},"data":data}) : helper)))
     + "</a></h4>\n                </div>\n            </div>\n\n            <div class=\"col-xs-6\">\n                <h4 style=\"margin-top:0px;margin-bottom:0px;padding-bottom:5px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\">"
     + alias3(((helper = (helper = helpers.n || (depth0 != null ? depth0.n : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"n","hash":{},"data":data}) : helper)))
@@ -135,10 +139,12 @@ templates['searchResult'] = template({"1":function(depth0,helpers,partials,data)
   if (stack1 != null) { buffer += stack1; }
   return buffer;
 },"5":function(depth0,helpers,partials,data) {
-    var helper;
+    var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
-  return "        \n        <div class=\"row\">\n            <div class=\"col-xs-2\" style=\"text-align:right;\">\n                <span class=\"label label-info\" data-toggle=\"tooltip\" data-animation=\"false\" data-placement=\"left\" title=\"Open\"><span class=\"glyphicon glyphicon-link\"></span></span>\n            </div>\n            <div class=\"col-xs-10\">\n                "
-    + this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
+  return "        \n        <div class=\"row\">\n            <div class=\"col-xs-2\" style=\"text-align:right;\">\n                <span class=\"label label-info\" data-toggle=\"tooltip\" data-animation=\"false\" data-placement=\"left\" title=\"Open\"><a href=\""
+    + alias3(((helper = (helper = helpers.asanaLink || (depth0 != null ? depth0.asanaLink : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"asanaLink","hash":{},"data":data}) : helper)))
+    + "\" target=\"_blank\"><span class=\"glyphicon glyphicon-link\"></span></a></span>\n            </div>\n            <div class=\"col-xs-10\">\n                "
+    + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
     + "\n            </div>\n        </div>\n        \n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1;
