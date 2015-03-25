@@ -3,6 +3,7 @@ Handlebars.registerHelper('template', function (templateName, context) {
 });
 
 Handlebars.registerHelper('data', function (options) {
+    console.log(stud.d[this]);
     return options.fn(stud.d[this]);
 });
 
@@ -11,9 +12,9 @@ Handlebars.registerHelper('panelColor', function () {
    if(this.status == "Complete") {
        return 'completed-asana'; } //if asana is complete return grayish green
    else if(this.backlog == 1) {
-       return 'inc-backlog'; } //if asana is not complete but in backlog return blue
+       return 'inc-backlog-asana'; } //if asana is not complete but in backlog return blue
    else {
-       return 'inc-frontlog'; } //if asana is not complete and in the frontlog return red orange
+       return 'inc-frontlog-asana'; } //if asana is not complete and in the frontlog return red orange
 });
 
 var stud = {};
@@ -209,6 +210,7 @@ stud.j.u = function () {
                 j['i'] = val.key;
                 j['index'] = val.key;                    
                 j['n'] = val.fields.summary;
+                j['status'] = val.fields.status.name;
                 j['u'] = val.fields.assignee.name;
                 j['name'] = val.fields.summary;
                 j['user']= val.fields.assignee.name;
@@ -386,7 +388,7 @@ $(document).ready(function () {
     //    //});
 
     // Fuzzy search on input change after 3 characters
-    $("#search").on("change keyup", function () {
+    $("#search").on("keyup", function () {
         var result;
         chrome.storage.local.set({
             "s": $("#search").val()
