@@ -28,15 +28,15 @@ function routeCorrectSlackOnID(button, itemID)
 
     if (button.hasClass("pingAssignee"))
     {
-        sendSlack(jira, "@"+jira.u,  "Ping");
+        sendSlack(jira, "@"+jira.u,  "Ping", '', "#B4C09B");
     }
     else if (button.hasClass("resolveAssignee"))
     {
-        sendSlack(jira, "@"+jira.u, "Please Resolve This");
+        sendSlack(jira, "@"+jira.u, "Please Resolve This", '', "#0067AC");
     }
     else if (button.hasClass("commentAssignee"))
     {
-        sendSlack(jira, "@"+jira.u, "Please add a comment");
+        sendSlack(jira, "@"+jira.u, "Please add a comment", '', "#F37949");
     }
     else if (button.hasClass("pingQALead"))
     {
@@ -60,20 +60,22 @@ function routeCorrectSlackOnID(button, itemID)
 }
 
 $(".sendCustomMessage").click(function (e) {
-    var recipientInput = $(this).closest("#recipient-name");
-    var messageInput = $(this).closest("#message-text");
+    console.log(this);
+    var modalContent = $(this).closest(".modal-content");
+    var recipientInput = $(modalContent).find("#recipient-name");
+    var messageInput = $(modalContent).find("#message-text");
 
-    alert($(recipientInput).val());
-    alert($(messageInput).val());
+    sendSlack(jira, "@" + recipientInput.val(), "New Message", messageInput.val());
 });
 
 
 
 
 
-function sendSlack(jira, channel, comment, message) {
+function sendSlack(jira, channel, comment, message, colorCode) {
 
     message = (typeof message === 'undefined') ? '' : message;
+    colorCode = (typeof colorCode === 'undefined') ? '#D00000' : colorCode;
 
     // construct an HTTP request
     var xhr = new XMLHttpRequest();
@@ -92,7 +94,7 @@ function sendSlack(jira, channel, comment, message) {
             {
                 "fallback":title,
                 "pretext":title,
-                "color":"#D00000",
+                "color":colorCode,
                 "fields":[
                     {
                         "title":"Message",
