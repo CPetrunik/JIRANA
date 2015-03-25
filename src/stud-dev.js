@@ -344,7 +344,9 @@ $(document).ready(function () {
         result = search($("#search").val());
         $("#search-out").html(Handlebars.templates.search(result));
         $(".searchResult").click(function (e) {
-            transitionToItem(e);
+            var h4Array = $(this).find("h4");
+            var itemNumber = $(h4Array[0]).text();
+            transitionToItem(itemNumber);
         });
     });
 });
