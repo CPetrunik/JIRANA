@@ -107,16 +107,21 @@ stud.a.u = function () {
                 "https://app.asana.com/api/1.0/projects/",
                 val,
                 "/tasks?modified_since=",
-                stud.a.t,
-                "&opt_fields=name,assignee.name,tags.name,modified_at,completed"
+                "'2014-10-21T00:00:00.000Z'",
+                "&opt_fields=name,assignee.name,tags.name,modified_at,completed,due_on,projects.name,notes"
             ].join(''),
             function (data) {
                 $.each(data.data, function (key, val) {
                     var a = stud.g('a:' + val.id);
                     a['i'] = val.id;
                     a['n'] = val.name;
+                    a['name'] = val.name;
                     a['u'] = (val.assignee !== null ? val.assignee.name.toLowerCase().replace(/ +/g, ".") : null);
-                    a['c'] = val.completed;
+                    a['user'] = (val.assignee !== null ? val.assignee.name.toLowerCase().replace(/ +/g, ".") : null);
+                    a['status'] = val.completed ? "Complete" : "Incomplete";
+                    a['date'] = val.due_on;
+                    a['desc'] = val.notes;
+                    a['module'] = val.projects[0].name;
                     a['l'] = [];
                     $.each(val.tags, function (key, val) {
                         if (val.name.toLowerCase().match(/^[a-z]+[\-][0-9]+$/)) {
@@ -143,15 +148,16 @@ stud.a.u = function () {
 
 function index_search() {
     var i = "";
+    var number = 0;
     $.each(stud.d, function (key, val) {
-        if (val.n.slice(-1) != ":") {
+        if (val.n.slice(-1) != ":" && ((val.n + " " + val.u).toLowerCase().replace(/[^a-z0-9 ]/g, ' ').match(/[a-z0-9]+/g))) {
             i = i + "[" + key + String.fromCharCode(0x5c) + (val.n + " " + val.u).toLowerCase().replace(/[^a-z0-9 ]/g, ' ').match(/[a-z0-9]+/g).join("+") + "]";
         }
     });
     stud.i = i;
-    chrome.storage.local.set({
-        "i": stud.i
-    });
+    // chrome.storage.local.set({
+//         "i": stud.i
+//     });
 }
 
 stud.a.r = function (p, t) {
