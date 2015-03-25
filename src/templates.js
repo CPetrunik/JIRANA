@@ -114,9 +114,11 @@ templates['searchResult'] = template({"1":function(depth0,helpers,partials,data)
 },"2":function(depth0,helpers,partials,data) {
     var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
-  return "        <div class=\"row\">\n            <div class=\"col-xs-2\">\n                <div class=\"jira\">\n                    <h4 style=\"margin-top:0px;margin-bottom:0px;\">"
+  return "        <div class=\"row\">\n            <div class=\"col-xs-2\">\n                <div class=\"jira\">\n                    <h4 style=\"margin-top:0px;margin-bottom:0px;\"><a href=\""
+    + alias3(((helper = (helper = helpers.jiraLink || (depth0 != null ? depth0.jiraLink : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"jiraLink","hash":{},"data":data}) : helper)))
+    + "\">"
     + alias3(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"i","hash":{},"data":data}) : helper)))
-    + "</h4>\n                </div>\n            </div>\n\n            <div class=\"col-xs-6\">\n                <h4 style=\"margin-top:0px;margin-bottom:0px;padding-bottom:5px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\">"
+    + "</a></h4>\n                </div>\n            </div>\n\n            <div class=\"col-xs-6\">\n                <h4 style=\"margin-top:0px;margin-bottom:0px;padding-bottom:5px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\">"
     + alias3(((helper = (helper = helpers.n || (depth0 != null ? depth0.n : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"n","hash":{},"data":data}) : helper)))
     + "</h4>\n            </div>\n            <div class=\"col-xs-3\" style=\"text-align:right;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;\">"
     + alias3(((helper = (helper = helpers.user || (depth0 != null ? depth0.user : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"user","hash":{},"data":data}) : helper)))

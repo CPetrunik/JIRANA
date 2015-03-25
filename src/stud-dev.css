@@ -301,3 +301,11 @@ border-bottom:2px solid #ddd;
 .inc-frontlog-asana{
 	background-color:#F37949 !important;
 }
+
+a:link {
+   color: white;
+}
+
+a:visited {
+   color: white;
+}
