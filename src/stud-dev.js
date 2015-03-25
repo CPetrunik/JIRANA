@@ -340,6 +340,9 @@ $(document).ready(function () {
         $('a[href="#sdd-main"]').tab('show');
         result = search($("#search").val());
         $("#search-out").html(Handlebars.templates.search(result));
+        $(".searchResult").click(function (e) {
+            transitionToItem(e);
+        });
     });
 });
 
