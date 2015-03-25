@@ -121,7 +121,9 @@ stud.a.u = function () {
                     $.each(val.tags, function (key, val) {
                         if (val.name.toLowerCase().match(/^[a-z]+[\-][0-9]+$/)) {
                             a['l'].push(val.name.toUpperCase());
-                            stud.g('j:' + val.name.toUpperCase()).l.push('a:' + a['i']);
+                            var j = stud.g('j:' + val.name.toUpperCase());
+                            j.l.push('a:' + a['i']);
+                            j['i'] = j['index'] = val.name.toUpperCase();
                         }
                     });
                     u.t = [val.modified_at, stud.a.l].sort()[1];
