@@ -397,9 +397,11 @@ $(document).ready(function () {
         result = search($("#search").val());
         $("#search-out").html(Handlebars.templates.search(result));
         $(".searchResult").click(function (e) {
-            var h4Array = $(this).find("h4");
-            var itemNumber = $(h4Array[0]).text();
-            transitionToItem(itemNumber);
+            var jira_id = $(this).find(".jira_id").first().val();
+            //var itemNumber = $(h4Array[0]).text();
+            
+            //console.log(jira_id);
+            transitionToItem(jira_id);
         });
     });
 });

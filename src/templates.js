@@ -69,9 +69,9 @@ templates['parentTemplate'] = template({"1":function(depth0,helpers,partials,dat
 
   return "        <div class=\"row\">\n            <div class=\"col-xs-12\">"
     + this.escapeExpression((helpers.template || (depth0 && depth0.template) || helpers.helperMissing).call(depth0,"jiraTemplate",{"name":"template","hash":{},"data":data}))
-    + "</div>\n        </div>\n\n        <div class=\"row\">\n            "
+    + "</div>\n        </div>\n        <div class=\"row\">\n            "
     + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.l : depth0),{"name":"each","hash":{},"fn":this.program(2, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + "\n        </div>\n\n";
+    + "\n        </div>\n";
 },"2":function(depth0,helpers,partials,data) {
     var stack1, helper, options, buffer = 
   " ";
@@ -85,11 +85,11 @@ templates['parentTemplate'] = template({"1":function(depth0,helpers,partials,dat
     + "</div>\n            ";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, options, buffer = 
-  "<div class=\"row\">\n    <div class=\"col-xs-12\">\n        <div class=\"row\" style=\"padding-top:15px;padding-bottom:15px;\">\n            <div class=\"col-xs-12\">\n                <button type=\"button\" id=\"returnToSearch\" class=\"btn btn-default btn-md\">\n                    <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span> Back\n                </button>\n            </div>\n        </div>\n\n";
+  "<div class=\"row\">\n    <div class=\"col-xs-12\">\n        <div class=\"row\" style=\"padding-top:15px;padding-bottom:15px;\">\n            <div class=\"col-xs-12\">\n                <button type=\"button\" id=\"returnToSearch\" class=\"btn btn-default btn-md\">\n                    <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span> Back\n                </button>\n            </div>\n        </div>\n";
   stack1 = ((helper = (helper = helpers.data || (depth0 != null ? depth0.data : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"data","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0,options) : helper));
   if (!helpers.data) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
-  return buffer + "\n    </div>\n</div>";
+  return buffer + "    </div>\n</div>";
 },"useData":true});
 templates['search'] = template({"1":function(depth0,helpers,partials,data) {
     return "                "
@@ -103,8 +103,10 @@ templates['search'] = template({"1":function(depth0,helpers,partials,data) {
     + "    </tbody>\n</table>";
 },"useData":true});
 templates['searchResult'] = template({"1":function(depth0,helpers,partials,data) {
-    var stack1, helper, options, buffer = "";
-
+    var stack1, helper, options, buffer = 
+  "        <input class=\"jira_id\" type=\"hidden\" value=\""
+    + this.escapeExpression(this.lambda(depth0, depth0))
+    + "\">\n";
   stack1 = ((helper = (helper = helpers.data || (depth0 != null ? depth0.data : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"data","hash":{},"fn":this.program(2, data, 0),"inverse":this.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0,options) : helper));
   if (!helpers.data) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
@@ -122,8 +124,10 @@ templates['searchResult'] = template({"1":function(depth0,helpers,partials,data)
     + alias3(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"status","hash":{},"data":data}) : helper)))
     + "</span>\n            </div>\n        </div>\n";
 },"4":function(depth0,helpers,partials,data) {
-    var stack1, helper, options, buffer = "";
-
+    var stack1, helper, options, buffer = 
+  "        <input class=\"asana_id\" type=\"hidden\" value=\""
+    + this.escapeExpression(this.lambda(depth0, depth0))
+    + "\">\n";
   stack1 = ((helper = (helper = helpers.data || (depth0 != null ? depth0.data : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"data","hash":{},"fn":this.program(5, data, 0),"inverse":this.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0,options) : helper));
   if (!helpers.data) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
