@@ -107,8 +107,10 @@ templates['search'] = template({"1":function(depth0,helpers,partials,data) {
     + "    </tbody>\n</table>";
 },"useData":true});
 templates['searchResult'] = template({"1":function(depth0,helpers,partials,data) {
-    var stack1, helper, options, buffer = "";
-
+    var stack1, helper, options, buffer = 
+  "        <input class=\"jira_id\" type=\"hidden\" value=\""
+    + this.escapeExpression(this.lambda(depth0, depth0))
+    + "\">\n";
   stack1 = ((helper = (helper = helpers.data || (depth0 != null ? depth0.data : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"data","hash":{},"fn":this.program(2, data, 0),"inverse":this.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0,options) : helper));
   if (!helpers.data) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
@@ -128,8 +130,10 @@ templates['searchResult'] = template({"1":function(depth0,helpers,partials,data)
     + alias3(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"status","hash":{},"data":data}) : helper)))
     + "</span>\n            </div>\n        </div>\n";
 },"4":function(depth0,helpers,partials,data) {
-    var stack1, helper, options, buffer = "";
-
+    var stack1, helper, options, buffer = 
+  "        <input class=\"asana_id\" type=\"hidden\" value=\""
+    + this.escapeExpression(this.lambda(depth0, depth0))
+    + "\">\n";
   stack1 = ((helper = (helper = helpers.data || (depth0 != null ? depth0.data : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"data","hash":{},"fn":this.program(5, data, 0),"inverse":this.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0,options) : helper));
   if (!helpers.data) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
