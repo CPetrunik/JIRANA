@@ -153,9 +153,6 @@ stud.a.u = function () {
     });
     // On Update Complete
     $.when.apply($, u.r).then(function () {
-        chrome.storage.local.set({
-            "d": stud.d
-        });
         stud.a.t = u.t;
         index_search();
     });
@@ -170,9 +167,12 @@ function index_search() {
         }
     });
     stud.i = i;
-    // chrome.storage.local.set({
-//         "i": stud.i
-//     });
+     chrome.storage.local.set({
+         "i": stud.i
+     });
+    chrome.storage.local.set({
+            "d": stud.d
+        });
 }
 
 stud.a.r = function (p, t) {
