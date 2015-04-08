@@ -1,0 +1,11 @@
+/* Chrome Extension CSS */
+body {
+    width: 750px;
+    margin:0;
+    padding:0;
+    border:0;
+}
+
+* {
+    outline: none!important;
+}
