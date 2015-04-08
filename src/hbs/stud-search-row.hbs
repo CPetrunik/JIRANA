@@ -24,7 +24,7 @@
         {{#each a}}
         <input class="asana_id" type="hidden" value="{{this}}">
         {{#data}}
-        
+
         <div class="row">
             <div class="col-xs-2" style="text-align:right;">
                 <a href="{{asanaLink}}" target="_blank"><span class="label label-info" data-toggle="tooltip" data-animation="false" data-placement="left" title="Open"><span class="glyphicon glyphicon-link"></span></span></a>
@@ -33,7 +33,43 @@
                 {{name}}
             </div>
         </div>
-        
+
+        {{/data}}
+        {{/each}}
+    </td>
+</tr>
+
+
+<tr class="search-result" style="cursor:default;">
+    <td>
+        {{#with j}}
+        <div class="row jira">
+            <input class="jira-key" type="hidden" value="{{this}}">
+            {{~#data~}}
+            <div class="col-xs-2 jira-id">
+                <a href="{{jiraLink}}" target="_blank">
+                    {{i}}
+                </a>
+            </div>{{~space ~}}
+            <div class="col-xs-6 jira-name">{{n}}</div>{{~space ~}}
+            <div class="col-xs-2 jira-assignee">{{nameFormat user}}</div>{{~space ~}}
+            <div class="col-xs-2 jira-status" ><span>{{status}}</span></div>{{~space ~}}
+            {{~/data ~}}
+        </div>
+        {{/with}}
+        {{#each a}}
+        <input class="asana_id" type="hidden" value="{{this}}">
+        {{#data}}
+
+        <div class="row">
+            <div class="col-xs-2" style="text-align:right;">
+                <a href="{{asanaLink}}" target="_blank"><span class="label label-info" data-toggle="tooltip" data-animation="false" data-placement="left" title="Open"><span class="glyphicon glyphicon-link"></span></span></a>
+            </div>
+            <div class="col-xs-10">
+                {{name}}
+            </div>
+        </div>
+
         {{/data}}
         {{/each}}
     </td>

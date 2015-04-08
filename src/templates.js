@@ -59,9 +59,7 @@ templates['jiraTemplate'] = template({"1":function(depth0,helpers,partials,data)
     + alias3(((helper = (helper = helpers.toggle || (depth0 != null ? depth0.toggle : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"toggle","hash":{},"data":data}) : helper)))
     + "</div>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-xs-6 col-md-4\"><strong>Fix Version:</strong> "
     + alias3(((helper = (helper = helpers.fix || (depth0 != null ? depth0.fix : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"fix","hash":{},"data":data}) : helper)))
-    + "</div>\n            <div class=\"col-xs-6 col-md-4\"><strong>Latest Commit:</strong> "
-    + alias3(((helper = (helper = helpers.commit || (depth0 != null ? depth0.commit : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"commit","hash":{},"data":data}) : helper)))
-    + "</div>\n        </div>\n        <p></p>\n		<div class=\"panel panel-default\">\n			<div class=\"panel-heading\">Latest Comment</div>\n			<div class=\"panel-body\">\n";
+    + "</div>\n            <div class=\"col-xs-6 col-md-4\">&nbsp;</div>\n        </div>\n        <p></p>\n		<div class=\"panel panel-default\">\n			<div class=\"panel-heading\">Latest Comment</div>\n			<div class=\"panel-body\">\n";
   stack1 = ((helper = (helper = helpers.comments || (depth0 != null ? depth0.comments : depth0)) != null ? helper : alias1),(options={"name":"comments","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data}),(typeof helper === alias2 ? helper.call(depth0,options) : helper));
   if (!helpers.comments) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
@@ -157,11 +155,44 @@ templates['searchResult'] = template({"1":function(depth0,helpers,partials,data)
     + "\" target=\"_blank\"><span class=\"label label-info\" data-toggle=\"tooltip\" data-animation=\"false\" data-placement=\"left\" title=\"Open\"><span class=\"glyphicon glyphicon-link\"></span></span></a>\n            </div>\n            <div class=\"col-xs-10\">\n                "
     + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
     + "\n            </div>\n        </div>\n        \n";
+},"7":function(depth0,helpers,partials,data) {
+    var stack1, helper, options, buffer =
+  "        <div class=\"row jira\">\n            <input class=\"jira-key\" type=\"hidden\" value=\""
+    + this.escapeExpression(this.lambda(depth0, depth0))
+    + "\">";
+  stack1 = ((helper = (helper = helpers.data || (depth0 != null ? depth0.data : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"data","hash":{},"fn":this.program(8, data, 0),"inverse":this.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0,options) : helper));
+  if (!helpers.data) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "</div>    \n";
+},"8":function(depth0,helpers,partials,data) {
+    var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+
+  return "<div class=\"col-xs-2 jira-id\">\n                <a href=\""
+    + alias3(((helper = (helper = helpers.jiraLink || (depth0 != null ? depth0.jiraLink : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"jiraLink","hash":{},"data":data}) : helper)))
+    + "\" target=\"_blank\">\n                    "
+    + alias3(((helper = (helper = helpers.i || (depth0 != null ? depth0.i : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"i","hash":{},"data":data}) : helper)))
+    + "\n                </a>\n            </div>"
+    + alias3(((helper = (helper = helpers.space || (depth0 != null ? depth0.space : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"space","hash":{},"data":data}) : helper)))
+    + "<div class=\"col-xs-6 jira-name\">"
+    + alias3(((helper = (helper = helpers.n || (depth0 != null ? depth0.n : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"n","hash":{},"data":data}) : helper)))
+    + "</div>"
+    + alias3(((helper = (helper = helpers.space || (depth0 != null ? depth0.space : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"space","hash":{},"data":data}) : helper)))
+    + "<div class=\"col-xs-2 jira-assignee\" style=\"font-size:12px;\">"
+    + alias3((helpers.nameFormat || (depth0 && depth0.nameFormat) || alias1).call(depth0,(depth0 != null ? depth0.user : depth0),{"name":"nameFormat","hash":{},"data":data}))
+    + "</div>"
+    + alias3(((helper = (helper = helpers.space || (depth0 != null ? depth0.space : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"space","hash":{},"data":data}) : helper)))
+    + "<div class=\"col-xs-2 jira-status\" ><span>"
+    + alias3(((helper = (helper = helpers.status || (depth0 != null ? depth0.status : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"status","hash":{},"data":data}) : helper)))
+    + "</span></div>"
+    + alias3(((helper = (helper = helpers.space || (depth0 != null ? depth0.space : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"space","hash":{},"data":data}) : helper)));
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1;
 
   return "<tr class=\"searchResult\" style=\"cursor:default;\">\n    <td>\n"
     + ((stack1 = helpers['with'].call(depth0,(depth0 != null ? depth0.j : depth0),{"name":"with","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.a : depth0),{"name":"each","hash":{},"fn":this.program(4, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + "    </td>\n</tr>\n\n\n<tr class=\"search-result\" style=\"cursor:default;\">\n    <td>\n"
+    + ((stack1 = helpers['with'].call(depth0,(depth0 != null ? depth0.j : depth0),{"name":"with","hash":{},"fn":this.program(7, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.a : depth0),{"name":"each","hash":{},"fn":this.program(4, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + "    </td>\n</tr>";
 },"useData":true});

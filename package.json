@@ -1,0 +1,54 @@
+{
+    "name": "Jirana!",
+    "version": "0.1.0",
+    "description": "STUD-DEV",
+    "private": true,
+    "devDependencies": {
+        "grunt": "^0.4.5",
+        "grunt-cli": "^0.1.13",
+        "grunt-contrib-qunit": "^0.4.0",
+        "grunt-contrib-concat": "^0.5.1",
+        "grunt-contrib-handlebars": "^0.10.1",
+        "grunt-contrib-watch": "^0.4.4",
+        "grunt-contrib-copy": "^0.8.0",
+        "grunt-contrib-clean": "^0.6.0"
+    },
+    "scripts": {
+        "start": "grunt start",
+        "test": "grunt test",
+        "build": "grunt build",
+        "clean": "grunt clean"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/CPetrunik/JIRANA.git"
+    },
+    "author": "STUD-DEV",
+    "bugs": {
+        "url": "https://github.com/CPetrunik/JIRANA/issues"
+    },
+    "homepage": "https://github.com/CPetrunik/JIRANA",
+    "manifest": {
+        "permissions": [
+            "storage",
+            "unlimitedStorage",
+            "cookies",
+            "tabs",
+            "webRequest",
+            "webRequestBlocking",
+            "https://jira2.workday.com/*",
+            "https://app.asana.com/*"
+        ],
+        "icons": {
+            "16": "icon.png",
+            "48": "icon.png",
+            "128": "icon.png"
+        },
+        "browser_action": {
+            "default_icon": "icon.png",
+            "default_popup": "stud-dev.html"
+        },
+        "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+        "manifest_version": 2
+    }
+}
