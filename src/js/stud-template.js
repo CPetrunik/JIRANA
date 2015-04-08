@@ -24,13 +24,13 @@ stud.template = (function () {
         if (this.status === "Complete") {
             return 'success';
         } else if (this.backlog === 1) {//if asana is complete return grayish green
-        
+
             return 'default';
         } else if ((new Date(this.date).getTime()) < (new Date().getTime() - (new Date().getTime() % 86400000))) {
          //if asana is not complete but in backlog return blue
             return 'danger';
         } else { //if asana is not complete and in the frontlog return red orange
-        
+
             return 'info';
         }
     });
@@ -42,7 +42,7 @@ stud.template = (function () {
             return new Handlebars.SafeString('<span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>');
         }
     });
-    
+
     Handlebars.registerHelper('jiraLink', function () {
         return "https://jira2.workday.com/browse/" + this.index;
     });

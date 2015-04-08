@@ -12,7 +12,7 @@
         async: false
     });
     console.log();
-    
+
     function test_jslint(path) {
         var file = "", pass = null;
         $.ajax({
@@ -34,15 +34,15 @@
             });
         }
         QUnit.test("Lint: " + path, function lint_test(assert){
-            assert.equal(JSLINT.errors.length, 0, message);    
+            assert.equal(JSLINT.errors.length, 0, message);
         });
-        
+
     }
     test_jslint('../stud-search.js');
     QUnit.test("stud-search.js", function testt(assert){
         assert.push(true, null, null, "noooo");
-        
-        
+
+
         assert.equal("fdsajfkldasjflkdsjafkldsjaklfjdslkafjldksajflkdsajflkdjsalkfjdlskafjldksjfalkdsjlfkdsafjldsakflsajflkdsjflksja","fdjskafjdlksjfkldsjaflksdruruytyryrieiieiejejfhefn ef nvrjnjrebfhe","fail");
         assert.ok(false, "15 errors\nb manny errors");
         assert.ok(JSLINT(strReturn), "Line: " + (JSLINT.errors[0].line - 1) + " \nChar: " + (JSLINT.errors[0].character - 1) + " " +(JSLINT.errors[0].reason));

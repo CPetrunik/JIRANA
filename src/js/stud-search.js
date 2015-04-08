@@ -104,7 +104,7 @@ stud.search = (function () {
             '((["][a-z]+["][:]["][a-z0-9+]+["][,])*', // Fields
             '(["][a-z]+["][:]["][a-z0-9+]+["]))?', // End Field
             '[}]' // object end
-        ].join(""), "g");       
+        ].join(""), "g");
     }
 
     return {

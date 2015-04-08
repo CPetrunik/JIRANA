@@ -13,20 +13,20 @@ stud.asana = (function () {
     function get(id) {
         return stud.storage.get('a', id);
     }
-    
+
     function put(id, data) {
-        
+
     }
-    
+
     function getProjectListRequest(workspace) {
         return $.getJSON([
             "https://app.asana.com/api/1.0/workspaces/",
             workspace,
             "/projects?archived=false"
         ].join(""));
-    
+
     }
-    
+
     function processProjectListRequest(data) {
         var projects = [];
         $.each(data.data, function (key, val) {
@@ -34,7 +34,7 @@ stud.asana = (function () {
         });
         return projects;
     }
-    
+
     function getTaskListRequest(project) {
         return $.getJSON([
             "https://app.asana.com/api/1.0/projects/",
@@ -54,7 +54,7 @@ stud.asana = (function () {
             ].join(",")
         ].join(''));
     }
-    
+
     function processTaskListRequest(data) {
         $.each(data.data, function (key, val) {
             stud.storage.put("a", val.id, {
@@ -69,7 +69,7 @@ stud.asana = (function () {
             });
         });
     }
-      
+
     function update() {
         return $.when(ready).then(function () {
             return getProjectListRequest("5311864561437");
@@ -110,7 +110,7 @@ stud.asana = (function () {
         });
         ready.resolve();
     }
-    
+
     return {
         get: get,
         update: update,
