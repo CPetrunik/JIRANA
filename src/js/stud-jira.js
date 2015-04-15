@@ -9,7 +9,12 @@
 //
 
 var stud = window.stud || {};
-stud.asana = (function () {
+stud.jira = (function () {
     'use strict';
+    function start() {
 
+    }
+    return {
+        start: start
+    };
 }());

@@ -1,3 +1,13 @@
+/* DO NOT USE
+ALL JS NOW COMES FROM THE JS FOLDER
+THIS IS LEFT AS A REFERENCE
+
+
+Navigation now occurs in the js/stud-routes.js
+*/
+
+
+
 /**
  * Created by frank.law on 3/24/15.
  */

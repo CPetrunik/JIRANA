@@ -7,7 +7,7 @@ var stud = window.stud || {};
 stud.search = (function () {
     'use strict';
     var config = {
-        'default': ['i', 'n', 'a'],
+        'd': ['i', 'n', 'a'],
         'n': 'fuzzy',
         'i': 'exact',
         'a': 'fuzzy',
@@ -15,9 +15,6 @@ stud.search = (function () {
     };
 
     function fuzzy(fields, words) {
-        console.log("fuzzy")
-        console.log(fields);
-        console.log(words);
         var conditions = [];
         $.each(words, function (key, word) {
             conditions.push([
@@ -34,9 +31,6 @@ stud.search = (function () {
     }
 
     function exact(fields, words) {
-        console.log("exact")
-        console.log(fields);
-        console.log(words);
         return [
             '(?=(["][a-z]+["][:]["][a-z0-9+]+["][,])*["]((',
             fields.join(")|("),
@@ -49,16 +43,16 @@ stud.search = (function () {
     function condition(prefix, words) {
         var prefixes = [],
             conditions = [];
-        if (prefix === "default") {
+        if (prefix === "d") {
             prefixes = [];
-            $.each(config['default'], function (key, val) {
+            $.each(config[prefix], function (key, val) {
                 if (config[val] === "fuzzy") {
                     prefixes.push(val);
                 }
             });
             conditions.push(fuzzy(prefixes, words));
             prefixes = [];
-            $.each(config['default'], function (key, val) {
+            $.each(config[prefix], function (key, val) {
                 if (config[val] === "exact") {
                     prefixes.push(val);
                 }
@@ -72,45 +66,31 @@ stud.search = (function () {
         return "(" + conditions.join("|") + ")";
     }
 
-    function search(str) {
-        var parameters, prefix, conditions, words;
-        parameters = str.toLowerCase().match(/[a-z0-9]+:?/g);
-        prefix = "default";
-        conditions = [];
-        words = [];
-
-        $.each(parameters, function (key, parameter) {
-            if (parameter.match(/([a-z0-9]+:)/)) {
-                console.log(prefix);
-                if(words.length > 0){
-                conditions.push(condition(prefix, words));
-                }
-                prefix = parameter.match(/([a-z0-9]+)/g)[0];
-                console.log(prefix);
-                words = [];
-            } else {
-                words.push(parameter);
-            }
+    function search(data) {
+        var conditions = [];
+        $.each(data, function (prefix, words) {
+            conditions.push(condition(prefix, words));
         });
-        console.log(prefix);
-        conditions.push(condition(prefix, words));
-        console.log(prefix);
 
-        return new RegExp([
-            '["][a-z0-9]+[$][a-z0-9]+["]', // key
+        var regex = new RegExp([
+            '["][a-z0-9]+[$][a-z0-9]+["](?=', // key
             '[:]', // separator
             '[{]', // object start
             conditions.join(""),
             '((["][a-z]+["][:]["][a-z0-9+]+["][,])*', // Fields
             '(["][a-z]+["][:]["][a-z0-9+]+["]))?', // End Field
-            '[}]' // object end
+            '[}])' // object end
         ].join(""), "g");
+        var index = stud.storage.index();
+        return (index.match(regex) || []).join("").replace(/["]+/g, "|").slice(1,-1).split("|");
+    }
+
+    function start() {
+
     }
 
     return {
-        f:fuzzy,
-        e:exact,
-        c:condition,
+        start: start,
         search: search
     };
 }());

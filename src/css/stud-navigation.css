@@ -8,8 +8,11 @@
 }
 
 .stud-navigation>.container>.navbar-brand {
-    outline:none;
     padding:14px;
+}
+
+.stud-navigation>.container>.navbar-brand:focus{
+    outline:none;
 }
 
 .stud-navigation>.container>.navbar-brand img {
@@ -18,3 +21,22 @@
     margin-bottom:-30px;
     margin-top:-30px;
 }
+
+.stud-navigation .stud-navigation-search {
+    margin-left:0;
+    margin-right:0;
+    padding-left:0;
+    padding-right:0;
+}
+.stud-navigation .stud-navigation-search input {
+    width:250px;
+}
+
+.stud-navigation ul li a {
+    height:50px;
+}
+
+.stud-navigation ul li a span {
+    font-size:75%;
+}
+

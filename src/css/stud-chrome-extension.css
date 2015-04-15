@@ -1,11 +1,29 @@
 /* Chrome Extension CSS */
+
 body {
     width: 750px;
-    margin:0;
-    padding:0;
-    border:0;
+    margin:auto;
+    padding: 0;
+    padding-top: 51px;
+    border: 0;
 }
 
 * {
     outline: none!important;
+}
+
+#content {
+    height: 500px;
+    width: 750px;
+    overflow-x: hidden;
+}
+
+table tr:first-child td {
+    border-top: none;
+}
+
+table, table tr, table tr td { table-layout: fixed; overflow:hidden; white-space: nowrap;}
+.table{
+padding-bottom:1px;
+border-bottom:2px solid #ddd;
 }

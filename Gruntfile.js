@@ -1,80 +1,93 @@
-/*global module*/
+/*global module, require*/
 module.exports = function (grunt) {
     'use strict';
 
     grunt.initConfig({
         handlebars: {
-            compile: {
+            "template" : {
                 options: {
-                    namespace: 'stud.templates',
+                    namespace: 'Handlebars.templates',
                     processName: function (path) {
                         var parts = path.split('/');
                         return parts[parts.length - 1].split('.')[0];
                     }
                 },
                 files: {
-                    "tmp/stud-handlebars.js" : ["src/hbs/**/*.hbs", 'src/hbs/*.hbs']
+                    "tmp/stud-hbs.js" : ["src/hbs/**/*.hbs", 'src/hbs/*.hbs']
+                }
+            },
+            "static" : {
+                options: {
+                    processName: function (path) {
+                        var parts = path.split('/');
+                        return parts[parts.length - 1].split('.')[0];
+                    },
+                    commonjs: true
+                },
+                files: {
+                    "tmp/static-html.js" : ["src/html/**/*.html", 'src/html/*.html']
                 }
             }
         },
         concat: {
             css: { files: {
                 "bld/stud-dev.css": [
-                    "lib/bootstrap.css",
-                    "src/css/stud-extend-bootstrap.css",
-                    "src/css/stud-search-result.css"
+                    "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                    "src/css/*.css"
                 ]
             } },
             js: { files: {
                 "bld/stud-dev.js": [
-                    "lib/jquery.min.js",
-                    "lib/bootstrap.min.js",
-                    "lib/handlebars.min.js"
+                    "node_modules/jquery/dist/jquery.min.js",
+                    "node_modules/bootstrap/dist/js/bootstrap.min.js",
+                    "node_modules/handlebars/dist/handlebars.runtime.min.js",
+                    "node_modules/director/build/director.min.js",
+                    "tmp/stud-hbs.js",
+                    "src/js/*.js"
                 ]
             } }
         },
         copy: {
-            html: {
-                files: [{
-                    expand: true,
-                    src: 'src/html/stud-main.html',
-                    dest: "bld/stud-dev.html",
-                    flatten: true
-                }]
-            },
             assets: {
                 files: [{
                     expand: true,
-                    src: ['lib/glyphicons.woff', 'img/*.png'],
+                    src: [
+                        'node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2',
+                        'src/png/*.png'
+                    ],
                     dest: "bld/",
                     flatten: true
                 }]
             }
         },
         qunit: {
-            files: ['test/**/*.html']
+            files: ['dev/test.html']
         },
         watch: {
-            hbs: {
-                files: ['src/hbs/**'],
-                tasks: ['handlebars:compile', 'concat:js', 'clean:tmp']
-            },
-            html: {
-                files: ['src/html/**'],
-                tasks: ['copy:html']
-            },
-            css: {
-                files: ['src/css/**'],
-                tasks: ['concat:css']
-            },
-            js: {
-                files: ['src/js/**'],
-                tasks: ['concat:js']
-            },
-            manifest: {
-                files: ['package.json'],
-                tasks: ['manifest']
+            all: {
+                files: ['src/**'],
+                tasks: ['build']
             }
+//            hbs: {
+//                files: ['src/hbs/**'],
+//                tasks: ['handlebars:template', 'concat:js', 'clean:tmp']
+//            },
+//            html: {
+//                files: ['src/html/**'],
+//                tasks: ['handlebars:static', 'static', 'clean:tmp']
+//            },
+//            css: {
+//                files: ['src/css/**'],
+//                tasks: ['concat:css']
+//            },
+//            js: {
+//                files: ['src/js/**'],
+//                tasks: ['concat:js']
+//            },
+//            manifest: {
+//                files: ['package.json'],
+//                tasks: ['manifest']
+//            }
         },
         clean: {
             bld: ['bld'],
@@ -101,12 +114,15 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('static', function () {
-
-
+        var pkg, Handlebars;
+        Handlebars = require('handlebars');
+        pkg = grunt.file.readJSON('package.json');
+        Handlebars.templates = require('./tmp/static-html.js')(Handlebars);
+        Handlebars.partials = Handlebars.templates;
+        grunt.file.write('bld/stud-dev.html', Handlebars.templates['stud-main']({name: pkg.name}));
     });
 
     grunt.registerTask('start', ['build', 'watch']);
     grunt.registerTask('test', ['qunit']);
-    grunt.registerTask('build', ['clean', 'manifest', 'handlebars:compile', 'concat:css', 'concat:js', 'copy:html', 'copy:assets', 'clean:tmp']);
-
+    grunt.registerTask('build', ['clean', 'manifest', 'handlebars:template', 'handlebars:static', 'static', 'concat:css', 'concat:js', 'copy:assets', 'clean:tmp']);
 };

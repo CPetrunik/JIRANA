@@ -1,3 +1,12 @@
+/* DO NOT USE
+ALL CSS NOW COMES FROM THE CSS FOLDER
+THIS IS LEFT AS A REFERENCE
+*/
+
+
+
+
+
 Handlebars.registerHelper('template', function (templateName, context) {
     return new Handlebars.SafeString(Handlebars.templates[templateName](this));
 });

@@ -24,7 +24,6 @@ stud.asana = (function () {
             workspace,
             "/projects?archived=false"
         ].join(""));
-
     }
 
     function processProjectListRequest(data) {
@@ -57,6 +56,14 @@ stud.asana = (function () {
 
     function processTaskListRequest(data) {
         $.each(data.data, function (key, val) {
+            console.log(val);
+            var links = [];
+            $.each(val.tags, function (key, val) {
+                if (val.name.toLowerCase().match(/^[a-z]+[\-][0-9]+$/)) {
+                        links.push(val.name.toUpperCase());
+                }
+            });
+
             stud.storage.put("a", val.id, {
                 "index": val.id,
                 "name": val.name,
@@ -65,7 +72,8 @@ stud.asana = (function () {
                 "due": new Date(val.due_on).getTime(),
                 "modified": new Date(val.modified_at).getTime(),
                 "description": val.notes,
-                "module": val.projects[0].name
+                "module": val.projects[0].name,
+                "links": links
             });
         });
     }
@@ -79,7 +87,7 @@ stud.asana = (function () {
             var requests = [];
             $.each(projectList, function (key, project) {
                 if (project === 5311864561448) {
-                    requests.push(getTaskListRequest(project));
+                requests.push(getTaskListRequest(project));
                 }
             });
             return $.when.apply($, requests);

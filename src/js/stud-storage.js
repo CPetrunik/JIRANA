@@ -72,7 +72,15 @@ stud.storage = (function () {
     }
 
     function get(cl, id) {
-
+        var obj = {};
+        $.each(storage_class[cl], function(from, to){
+            //key index
+            //val index_data
+            $.each(storage_group[from], function (index){
+                obj[storage_group[to][index]] = storage_data[from][cl + "$" + id][storage_group[from][index]];
+            });
+        });
+        return obj;
     }
 
     function start() {
@@ -98,7 +106,7 @@ stud.storage = (function () {
     }
 
     function persist() {
-
+        chrome.storage.local.set(storage_data);
     }
 
     return {
@@ -106,6 +114,7 @@ stud.storage = (function () {
         put: put,
         get: get,
         start: start,
-        ready: ready
+        ready: ready,
+        data: storage_data
     };
 }());
