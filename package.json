@@ -40,8 +40,7 @@
       "unlimitedStorage",
       "cookies",
       "tabs",
-      "webRequest",
-      "webRequestBlocking",
+      "background",
       "https://jira2.workday.com/*",
       "https://app.asana.com/*"
     ],
@@ -53,6 +52,10 @@
     "browser_action": {
       "default_icon": "icon.png",
       "default_popup": "stud-dev.html"
+    },
+    "background": {
+      "scripts": ["stud-back.js"],
+      "persistent": false
     },
     "manifest_version": 2
   }

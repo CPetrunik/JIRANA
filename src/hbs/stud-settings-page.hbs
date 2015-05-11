@@ -1,27 +1,66 @@
-<div class="container">
+<div class="col-xs-12">
+<div style="width:100%;">
 
-
-    <form>
-        <h3>Settings</h3>
-        <label>Authentication</label>
+    <form style="">
+        <h3>Authentication</h3>               
+            
+        
         <div class="form-group">
+            <label>Asana</label>
             <input type="text" class="form-control" placeholder="Asana Key">
         </div>
         <div class="form-group">
+            <label>Jira</label>
             <input type="text" class="form-control" placeholder="Jira Key">
         </div>
         <div class="form-group">
+            <label>Slack</label>
             <input type="text" class="form-control" placeholder="Slack Key">
         </div>
+        
+        <h3>Modules</h3>               
+
+        <div class="row">
+             
+            <div class="col-xs-2 form-inline">
+                
+                <label>Type</label>
+               
+            </div>
+            <div class="col-xs-2">
+                
+                <label>Prefix</label>
+                
+            </div>
+            <div class="col-xs-2">
+                <label>Name</label>
+            </div>
+            <div class="col-xs-3">
+                <label>Project</label>
+            </div>
+            <div class="col-xs-3">
+                <label>Filter</label>
+            </div>
+        </div>
+        {{> stud-settings-module-row }}
+        <div class="row">
+            <div class="col-xs-2">
+            <button type="button" class="btn btn-success btn-block" id="module-add">Add</button>
+            </div>
+        </div>
+        
+        <h3>Data</h3>
+            <input type="file">
         <div class="row">
             <div class="col-xs-4">
                 <div class="form-group">
-                    <label>Debugging</label>
                     <button type="button" class="btn btn-default btn-block" id="setting-build-index">Build Index</button>
                     <button type="button" class="btn btn-default btn-block" id="setting-clear-data">Clear Data</button>
+                    <a href="#" target="_blank">Open Tab</a>
                 </div>
             </div>
         </div>
     </form>
     <!-- comment -->
 </div>
+    </div>

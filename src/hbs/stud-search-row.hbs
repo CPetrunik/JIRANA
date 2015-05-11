@@ -1,17 +1,17 @@
 <tr class="search-result" style="cursor:default;">
     <td>
         {{#with j}}
-        <div class="row jira">
-            <input class="jira-key" type="hidden" value="{{this}}">
+        <div class="row jira">{{~space ~}}
+            <input class="jira-key" type="hidden" value="{{this}}">{{~space ~}}
 
-            <div class="col-xs-2 jira-id">
+            <div class="col-xs-2 jira-id">{{~space ~}}
                 <a href="{{jiraLink}}" target="_blank">
-                    i
-                </a>
+                    STU-10000
+                </a>{{~space ~}}
             </div>{{~space ~}}
-            <div class="col-xs-6 jira-name">n</div>{{~space ~}}
-            <div class="col-xs-2 jira-status" ><span>{{status}}</span></div>{{~space ~}}
-            <div class="col-xs-2 jira-assignee">{{nameFormat assignee}}</div>{{~space ~}}
+            <div class="col-xs-6 jira-name">Sample Jira Name Sample Jira Name Sampe Jira Name Sample Jira Name</div>{{~space ~}}
+            <div class="col-xs-2 jira-status" ><span>Resolved{{status}}</span></div>{{~space ~}}
+            <div class="col-xs-2 jira-assignee">Joe Smith{{nameFormat assignee}}</div>{{~space ~}}
 
 
         </div>
@@ -21,10 +21,10 @@
         {{#asana}}
         <div class="row asana">{{~space ~}}
             <div class="col-xs-2 asana-link">
-                <a href="{{asanaLink}}" target="_blank"><span class="glyphicon glyphicon-link"></span></a>
+                <div class="asana-due">{{#if due}}{{formatDate due}}{{/if}}</div><a href="{{asanaLink}}" target="_blank"><span class="glyphicon glyphicon-link"></span></a>
             </div>{{~space ~}}
             <div class="col-xs-8 asana-name">
-                {{name}}
+                {{asanaComplete}} {{name}}
             </div>{{~space ~}}
             <div class="col-xs-2 asana-assignee">{{nameFormat assignee}}</div>{{~space ~}}
         </div>

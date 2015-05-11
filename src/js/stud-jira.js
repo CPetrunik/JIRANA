@@ -11,6 +11,9 @@
 var stud = window.stud || {};
 stud.jira = (function () {
     'use strict';
+    
+    function get() {}
+    
     function start() {
 
     }

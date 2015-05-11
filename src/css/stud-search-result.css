@@ -1,28 +1,63 @@
+.search-result{
+    font-size:0;   
+}
+
 .search-result .jira>div,
 .search-result .asana>div{
     display: inline-block;
     float: none;
-    font-size: 18px;
+    font-size: 0;
     line-height: 1.2;
     vertical-align: middle;
 }
 
-.search-result .jira>.jira-name,
-.search-result .asana>.asana-name{
+.search-result .jira>.jira-name{
     font-size: 16px;
     font-weight: 500;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.search-result .asana>.asana-name{
+    font-size: 14px;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-result .asana>.asana-link{
+    text-align:right;
+}
+
+.search-result .asana{
+    margin-top:2px;
+}
+.search-result>td>div:only-of-type {
+    margin-top:0px;
+}
 
 .search-result .asana>.asana-link a{
-    background-color:#d9534f;
+    background-color:#5bc0de;
     border-radius: 3px;
     color:#FFF;
-    display:block;
-    font-size:16px;
+    display:inline-block;
+    font-size:12px;
+    padding-top:2px;
+    padding-bottom:1px;
+    margin-right:0px;
+    width:20px;
     text-align: center;
     text-decoration: none;
+}
+.search-result .asana>.asana-link .asana-due{
+    display:inline-block;
+    float:left;
+    margin-left:0px;
+    width:75px;
+    text-align:center;
+    font-size:15px;
+    padding-bottom:0px;
+    vertical-align: middle;
+    color:#555;
 }
 
 .search-result .jira>.jira-id a {
@@ -50,16 +85,21 @@
     display:inline-block;
     font-size:11px;
     font-weight:700;
-    line-height:1.6em;
-    padding: 0 .5em;
+    line-height:1.0em;
+    padding: 3px .5em;
     text-align: center;
     text-decoration: none;
 
 }
 
-.search-result .jira>.jira-assignee {
+.search-result .jira>.jira-assignee,
+.search-result .asana>.asana-assignee {
     font-size:12px;
     overflow: hidden;
+    text-align:right;
     text-overflow: ellipsis;
 }
 
+.search-result .jira>.jira-assignee{
+    font-weight:500;
+}

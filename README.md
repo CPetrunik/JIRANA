@@ -1,4 +1,4 @@
-STUD-DEV
+JIRANA
 ========
 
 JIRA Asana Integration Project
@@ -26,7 +26,7 @@ JIRA Asana Integration Project
 ### Developer Commands
 
 **`npm start`**  
-will listen to changes in the `src` folder and auto build appropriate parts of the app when changes occur.
+will listen to changes in the `src` folder and auto build the app when changes are made.
 
 **`npm run build`**  
 will clean the `bld` folder and build the entire app
@@ -35,4 +35,4 @@ will clean the `bld` folder and build the entire app
 will clean the `bld` and `tmp` folders
 
 **`npm test `**  
-will run the test suite
+will run the test suite -- not working yet

@@ -82,7 +82,7 @@ stud.search = (function () {
             '[}])' // object end
         ].join(""), "g");
         var index = stud.storage.index();
-        return (index.match(regex) || []).join("").replace(/["]+/g, "|").slice(1,-1).split("|");
+        return (index.match(regex) || []).join("").replace(/["]+/g, "|").slice(1, -1).split("|");
     }
 
     function start() {

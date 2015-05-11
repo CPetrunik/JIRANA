@@ -4,12 +4,18 @@
 }
 
 .stud-navigation>.container{
-     border-bottom:1px solid #f0ad4e;
+    border-bottom:1px solid #f0ad4e;
+    width:100%;
+    max-width:750px !important;
 }
+/*
 
 .stud-navigation>.container>.navbar-brand {
     padding:14px;
 }
+*/
+
+
 
 .stud-navigation>.container>.navbar-brand:focus{
     outline:none;
@@ -40,3 +46,7 @@
     font-size:75%;
 }
 
+
+.stud-navigation .navbar-nav{
+margin-right:-15px;
+}

@@ -3,6 +3,8 @@
 //====================
 /*jslint browser: true , unparam:true*/
 /*global $, stud */
+var stud = window.stud || {};
+stud.main = true;
 
 $(function () {
     'use strict';
@@ -13,4 +15,5 @@ $(function () {
     stud.search.start();
     stud.slack.start();
     stud.template.start();
+    stud.log.start();
 });

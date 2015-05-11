@@ -53,7 +53,8 @@ module.exports = function (grunt) {
                     expand: true,
                     src: [
                         'node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2',
-                        'src/png/*.png'
+                        'src/png/*.png',
+                        'src/js/stud-back.js'
                     ],
                     dest: "bld/",
                     flatten: true
